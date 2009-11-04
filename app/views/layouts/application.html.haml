@@ -18,3 +18,8 @@
             Users
       != yield
       %footer.column.width4.first
+        - if logged_in?
+          Hi, #{current_user.name}
+          != link_to 'log out', session_path, :method => :delete
+        - else
+          != link_to 'log in/sign up', new_session_path
