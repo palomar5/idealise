@@ -17,7 +17,12 @@ module RPXNow
       data.delete(:api_version)
 
       path = "/api/v#{version}/#{method}"
+      puts "wooooo--------------------------"
+      puts path
+      puts(({:apiKey => RPXNow.api_key}.merge(data)).inspect)
       response = request(path, {:apiKey => RPXNow.api_key}.merge(data))
+      puts response.body.inspect
+      puts "end-----------------------------"
       parse_response(response)
     end
 
@@ -61,6 +66,7 @@ module RPXNow
       if response.code.to_i >= 400
         raise ServiceUnavailableError, "The RPX service is temporarily unavailable. (4XX)"
       else
+        puts response.body
         result = JSON.parse(response.body)
         return result unless result['err']
 

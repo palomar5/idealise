@@ -9,4 +9,10 @@ class SessionsController < ApplicationController
     self.current_user = User.find_by_identifier(data[:identifier]) || User.create!(data)
     redirect_to '/'
   end
+  
+  def destroy
+    session[:user_id] = nil
+    redirect_to '/'
+  end
+  
 end
