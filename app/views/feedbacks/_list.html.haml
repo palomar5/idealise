@@ -1,0 +1,4 @@
+%ul
+  - project.feedbacks.each do |feedback|
+    %li
+      != simple_format(h(feedback.text))

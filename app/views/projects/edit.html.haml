@@ -2,8 +2,8 @@
   %h2 Edit your project
 
   - form_for(@project,nil, :class => 'column width2 first') do |f|
-    = render :partial => 'form', :locals => { :f  => f }
+    != render :partial => 'form', :locals => { :f  => f }
     %p.actions.width4.first
-      = f.submit 'Save'
+      != f.submit 'Save'
       or
-      = link_to 'Cancel', projects_path
+      != link_to 'Cancel', projects_path

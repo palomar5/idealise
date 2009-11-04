@@ -6,6 +6,6 @@
   - form_for(@project,nil, :class => 'column width2 first') do |f|
     != render :partial => 'form', :locals => { :f  => f }
     %p.actions.width4.first
-      = f.submit 'Create'
+      != f.submit 'Create'
       or
-      = link_to 'Cancel', projects_path
+      != link_to 'Cancel', projects_path

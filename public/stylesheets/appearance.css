@@ -1,1 +1,3 @@
 .actions { text-align:right; }
+ul.tags { list-style-type: none; margin:0; padding:0; height:1.5em; display:inline;}
+ul.tags li { display:block; border:1px solid #000; float:left; background:#ff0;margin:2px; padding:2px;}
