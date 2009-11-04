@@ -7,6 +7,13 @@
   %body
     #page
       %header.column.width4.first
-        %h1 idealise
+        %h1.column.width1.first idealise
+        %ul.column.width3.menu
+          %li
+            Dashboard
+          %li
+            != link_to 'Projects', projects_path
+          %li
+            Users
       != yield
       %footer.column.width4.first

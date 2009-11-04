@@ -1,3 +1,20 @@
+/* menu */
+
+.menu {
+  list-style-type: none;
+}
+
+.menu li {
+  display: block;
+  float: left;
+  margin-right: 10px;
+}
+
+/* forms */
+
 .actions { text-align:right; }
+
+/* projects */
+
 ul.tags { list-style-type: none; margin:0; padding:0; height:1.5em; display:inline;}
 ul.tags li { display:block; border:1px solid #000; float:left; background:#ff0;margin:2px; padding:2px;}
