@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :sessions, :collection => { :rpx_token => :get }
+
 
 
   map.resources :projects, :has_many => :feedbacks
