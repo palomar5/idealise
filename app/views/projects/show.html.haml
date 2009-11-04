@@ -1,0 +1,12 @@
+%section.width4.first
+  %h2= @project.title
+  %p
+    Tagged with:
+    %ul.tags
+      - @project.tag_list.each do |tag|
+        %li= tag
+  .short-description
+    != simple_format(h(@project.short_description))
+  .description
+    != sanitize(@project.description)
+

@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag 'application'
+    %title #{@page_title} - Idealise it
+    != yield :head
+  %body
+    #page
+      %header.column.width4.first
+        %h1 idealise
+      != yield
+      %footer.column.width4.first

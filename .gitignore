@@ -1,0 +1,9 @@
+config/database.yml
+log/*.log
+tmp/**/*
+.rsync_cache
+*.sqlite3
+tmp/restart.txt
+*.sql
+*.sql.gz
+*.tmproj

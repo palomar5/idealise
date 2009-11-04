@@ -1,0 +1,11 @@
+%section.width4.first
+  %h2 Add a project
+
+  %p Write your concept below.  As a guide try to be precise, consise, and link to any mockups or supporting materials.
+
+  - form_for(@project,nil, :class => 'column width2 first') do |f|
+    != render :partial => 'form', :locals => { :f  => f }
+    %p.actions.width4.first
+      = f.submit 'Create'
+      or
+      = link_to 'Cancel', projects_path
