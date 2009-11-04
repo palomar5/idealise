@@ -3,7 +3,8 @@
 .box {
   background: #eee;
   border: 1px solid #ccc;
-  padding: 18px 12px;
+  padding: 17px 12px;
+  margin-bottom: 18px;
 }
 
 /* menu */
