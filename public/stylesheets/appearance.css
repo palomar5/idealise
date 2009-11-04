@@ -1,3 +1,11 @@
+/* generic styles */
+
+.box {
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 18px 12px;
+}
+
 /* menu */
 
 .menu {
@@ -7,12 +15,14 @@
 .menu li {
   display: block;
   float: left;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 /* forms */
 
 .actions { text-align:right; }
+
+/* homepage */
 
 /* projects */
 
