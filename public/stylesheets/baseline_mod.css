@@ -17,3 +17,5 @@
 .unitx7 { width: 843px; } /* 70.25em */
 
 form { overflow: visible;}
+
+label.width3 input, label.width3 textarea { width: 716px; }
