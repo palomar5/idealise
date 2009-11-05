@@ -8,36 +8,41 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    login_user(:simple_user)
     get :new
     assert_response :success
   end
 
   test "should create project" do
+    login_user(:simple_user)
     assert_difference('Project.count') do
-      post :create, :project => { }
+      post :create, :project => Factory.attributes_for(:project)
     end
-
+    
     assert_redirected_to project_path(assigns(:project))
   end
 
   test "should show project" do
-    get :show, :id => projects(:one).to_param
+    get :show, :id => projects(:simple_project).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => projects(:one).to_param
+    login_user(:simple_user)
+    get :edit, :id => projects(:simple_project).to_param
     assert_response :success
   end
 
   test "should update project" do
-    put :update, :id => projects(:one).to_param, :project => { }
+    login_user(:simple_user)
+    put :update, :id => projects(:simple_project).to_param, :project => Factory.attributes_for(:project)
     assert_redirected_to project_path(assigns(:project))
   end
 
   test "should destroy project" do
+    login_user(:simple_user)
     assert_difference('Project.count', -1) do
-      delete :destroy, :id => projects(:one).to_param
+      delete :destroy, :id => projects(:simple_project).to_param
     end
 
     assert_redirected_to projects_path

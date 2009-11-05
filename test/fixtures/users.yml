@@ -1,13 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-  username: MyString
-  email: MyString
-  identifier: MyString
+simple_user:
+  name: John Doe
+  username: johndoe
+  email: johndoe@example.com
+  identifier: foobar
 
-two:
-  name: MyString
-  username: MyString
-  email: MyString
-  identifier: MyString
