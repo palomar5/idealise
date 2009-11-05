@@ -1,10 +1,13 @@
 %section.width4.first
-  %h2= @project.title
+  %h4
+    = @project.title
+    != link_to '(edit)', edit_project_path
   %ul.tags
     - @project.tag_list.each do |tag|
       %li= tag
   .short-description.first
-    != simple_format(h(@project.short_description))
+    %strong
+      != simple_format(h(@project.short_description))
   .description
     != sanitize(@project.description)
 
