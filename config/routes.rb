@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
 
-  map.resources :projects, :has_many => :feedbacks
+  map.resources :projects, :has_many => [:feedbacks, :project_kudos]
 
   # The priority is based upon order of creation: first created -> highest priority.
 
