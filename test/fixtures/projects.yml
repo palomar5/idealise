@@ -1,11 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: MyString
-  short_description: MyText
-  description: MyText
-
-two:
-  title: MyString
-  short_description: MyText
-  description: MyText
+simple_project:
+  user: simple_user
+  title: This is a simple Project
+  short_description: This is a simple short description
+  description: This is a long description
+  

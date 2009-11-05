@@ -1,7 +1,7 @@
 %section.width4.first
   %h4
     = @project.title
-    != link_to '(edit)', edit_project_path
+    != link_to '(edit)', edit_project_path(@project)
   %p
     Kudos:
     = @project.project_kudos.sum(:rating)

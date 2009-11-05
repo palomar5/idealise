@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class ProjectKudosTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+  should_belong_to :project
+  should_belong_to :user
+  
+  # should_validate_uniqueness_of :project_id TODO: Not currently working, check out how to test this
+  
 end

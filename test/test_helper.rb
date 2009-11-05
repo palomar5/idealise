@@ -1,7 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
-
+require File.join(Rails.root, 'test','factories')
 class ActiveSupport::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
   # in a transaction that's rolled back on completion.  This ensures that the
@@ -35,4 +35,15 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  def login_user(user)
+    @controller.stubs(:logged_in?).returns(true)
+    if user.is_a? Symbol
+      @controller.stubs(:current_user).returns(users(user))
+    else
+      @controller.stubs(:current_user).returns(user)
+    end
+  end
+  
+  
 end
