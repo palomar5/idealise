@@ -8,6 +8,9 @@
   .description
     != sanitize(@project.description)
 
+!= button_to "+", project_project_kudos_path(@project, :rating => 1), :method => :post
+!= button_to "-", project_project_kudos_path(@project, :rating => -1), :method => :post
+
 %section.width4.first
   != render :partial => 'feedbacks/form', :locals => { :project => @project }
 

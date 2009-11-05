@@ -9,11 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091104221140) do
+ActiveRecord::Schema.define(:version => 20091105002759) do
 
   create_table "feedbacks", :force => true do |t|
     t.text     "text"
     t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "project_kudos", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "rating"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -22,6 +31,12 @@ ActiveRecord::Schema.define(:version => 20091104221140) do
     t.string   "title"
     t.text     "short_description"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "sessions", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
