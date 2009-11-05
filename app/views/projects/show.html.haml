@@ -1,10 +1,10 @@
 %section.width4.first
   %h4
     = @project.title
-    != link_to '(edit)', edit_project_path(@project)
+    - if logged_in? && current_user == @project.user
+      != link_to '(edit)', edit_project_path(@project)
   %p
-    Kudos:
-    = @project.project_kudos.sum(:rating)
+    != kudos_sparkline_tag(@project.kudos_history, "ffffff")
   %ul.tags
     - @project.tag_list.each do |tag|
       %li= tag

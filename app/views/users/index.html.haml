@@ -1,0 +1,7 @@
+%section.width4.first
+  %h2 All users
+  %ul
+    - @users.each do |user|
+      %li!= link_to user.name, user
+  %p NOTE: This would be a smash place to show the most bestest users, the latest new users, whatever.
+  

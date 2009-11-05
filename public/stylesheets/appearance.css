@@ -64,9 +64,20 @@ ul.feedback {
 .feedback li {
   margin: 18px 0;
 }
+.feedback .meta {
+  font-weight:bold;
+}
 .feedback .meta form {
   display: inline;
 }
 .feedback .meta form div {
   display: inline;
 }
+
+/* kudos colors */
+.good { color: #0f0;}
+.bad { color: #f00;}
+.super { color: #080;}
+.crap { color: #800;}
+
+

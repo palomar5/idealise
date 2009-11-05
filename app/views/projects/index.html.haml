@@ -1,27 +1,21 @@
 %section.width4.first
-  %h4 Projects on idealise
+  %h2 Projects on idealise
+
 
   %table
-    %thead
-      %tr
-        %th Title
-        %th Short description
-        %th Description
     %tbody
       - @projects.each do |project|
         %tr
           %td
-            !=h project.title
+            !=link_to h(project.title), project
           %td
-            !=h project.short_description
+            != kudos_sparkline_tag(project.kudos_history, cycle("f6f6f6", "ffffff")) unless project.kudos_history.empty?
           %td
-            !=h project.description
+            = truncate(project.short_description, :length => 200)
           %td
-            != link_to 'Show', project
-          %td
-            != link_to 'Edit', edit_project_path(project)
-          %td
-            != link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+            - if logged_in? && project.user == current_user
+              != link_to 'Edit', edit_project_path(project)
+              != link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
 
   %p
     != link_to 'New project', new_project_path

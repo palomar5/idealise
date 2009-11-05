@@ -8,5 +8,26 @@
     %p Free, fun and funky - join the party!
 %section.column.width2.first
   %h2 Hot projects
+  %table
+    %tbody
+      - @hot_projects.each do |project|
+        %tr
+          %td
+            !=link_to h(project.title), project
+          %td
+            != kudos_sparkline_tag(project.kudos_history, cycle("f6f6f6", "ffffff")) unless project.kudos_history.empty?
+  
 %section.column.width2
   %h2 Active users
+  %table
+    %tbody
+      - @respected_users.each do |ar|
+        - user = ar.first
+        - sum = ar.last
+        %tr
+          %td
+            !=link_to h(user.name), user
+          %td
+            Kudos sum:
+            != sum
+  

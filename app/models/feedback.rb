@@ -6,4 +6,10 @@ class Feedback < ActiveRecord::Base
   
   validates_presence_of :text
   
+  def kudos_history
+    running = 0
+    feedback_ratings.all(:limit => 20).map{|kudos| running = running + kudos.rating }
+  end
+  
+  
 end
