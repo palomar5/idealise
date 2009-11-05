@@ -1,5 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  text: Feedback
-  project: simple_project
+  feedback: one
+  user: simple_user
+  rating: 1

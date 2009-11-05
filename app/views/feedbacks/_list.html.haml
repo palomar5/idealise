@@ -1,4 +1,10 @@
 %ul.width3.first.feedback
   - project.feedbacks.each do |feedback|
     %li
+      .meta
+        #{feedback.try(:user).try(:name)} 
+        #{feedback.feedback_ratings.sum(:rating)} 
+        #{feedback.created_at.to_s :short }
+        != button_to "+", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1 )
+        != button_to "-", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1)
       != simple_format(h(feedback.text))

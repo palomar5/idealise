@@ -1,9 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :feedback_ratings
+
   map.resource :session, :collection => { :rpx_token => :post }
 
-
-
-  map.resources :projects, :has_many => [:feedbacks, :project_kudos]
+  map.resources :projects, :has_many => :project_kudos do |p|
+    p.resources :feedbacks, :has_many => :feedback_ratings
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 
