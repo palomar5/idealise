@@ -43,6 +43,15 @@ header .login {
 ul.tags { list-style-type: none; margin:18px 0; padding:0; height:18px; }
 ul.tags li { display:block; border:1px solid #000; float:left; background:#fe0 ;margin:2px; padding:2px 4px;}
 
+.kudos>* {
+  float: left;
+  margin-right: 12px;
+}
+
+.kudos input {
+  margin-left: 0;
+}
+
 ul.feedback {
   list-style-type: none
 }

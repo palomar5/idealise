@@ -2,6 +2,9 @@
   %h4
     = @project.title
     != link_to '(edit)', edit_project_path
+  %p
+    Kudos:
+    = @project.project_kudos.sum(:rating)
   %ul.tags
     - @project.tag_list.each do |tag|
       %li= tag
@@ -11,12 +14,13 @@
   .description
     != sanitize(@project.description)
 
-!= button_to "+", project_project_kudos_path(@project, :rating => 1), :method => :post
-!= button_to "-", project_project_kudos_path(@project, :rating => -1), :method => :post
+- if logged_in?
+  .ruler.width3.first.kudos
+    %p Give Kudos: 
+    != button_to "+", project_project_kudos_path(@project, :rating => 1), :method => :post
+    != button_to "-", project_project_kudos_path(@project, :rating => -1), :method => :post
+    %section.width4.first
+      != render :partial => 'feedbacks/form', :locals => { :project => @project }
 
-%section.width4.first
-  != render :partial => 'feedbacks/form', :locals => { :project => @project }
-
-%section.width4.first
-  != render :partial => 'feedbacks/list', :locals => { :project => @project }
-  
+    %section.width4.first
+      != render :partial => 'feedbacks/list', :locals => { :project => @project }
