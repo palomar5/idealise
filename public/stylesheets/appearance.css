@@ -7,10 +7,25 @@
   margin-bottom: 18px;
 }
 
-/* menu */
+.ruler {
+  margin-top: 12px;
+  padding-top: 4px;
+  border-top: 2px solid #cde;
+}
+
+th {
+  border-top: none;
+}
+
+/* header */
 
 .menu {
   list-style-type: none;
+}
+
+header .login {
+  margin-top: 18px;
+  text-align: right;
 }
 
 .menu li {
@@ -23,9 +38,24 @@
 
 .actions { text-align:right; }
 
-/* homepage */
-
 /* projects */
 
-ul.tags { list-style-type: none; margin:0; padding:0; height:1.5em; display:inline;}
-ul.tags li { display:block; border:1px solid #000; float:left; background:#ff0;margin:2px; padding:2px;}
+ul.tags { list-style-type: none; margin:18px 0; padding:0; height:18px; }
+ul.tags li { display:block; border:1px solid #000; float:left; background:#fe0 ;margin:2px; padding:2px 4px;}
+
+.kudos>* {
+  float: left;
+  margin-right: 12px;
+}
+
+.kudos input {
+  margin-left: 0;
+}
+
+ul.feedback {
+  list-style-type: none
+}
+
+.feedback li {
+  margin: 18px 0;
+}

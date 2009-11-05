@@ -1,7 +1,7 @@
-- form_for(:feedback, :url => project_feedbacks_path(project), :class => 'column width3 first') do |f|
-  != f.error_messages
+- form_for(:feedback, :url => project_feedbacks_path(project), :html => { :class => 'column width3 first' }) do |f|
+!= f.error_messages
   %label.width3.multilinex3.first
-    Give your Feedback:
+    Give your Feedback here:
     != f.text_area :text
-  %p.width3.first
+  %p.width3.first.actions
     != f.submit 'Submit'

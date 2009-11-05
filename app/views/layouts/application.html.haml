@@ -9,25 +9,27 @@
       %header.column.width4.first
         %h1.column.width1.first
           != link_to 'idealise', root_path
-        %ul.column.width3.menu
+        %ul.column.width2.menu
           %li
             Dashboard
           %li
             != link_to 'Projects', projects_path
           %li
             Users
-      -if flash[:notice]
-        %section.column.width4.first
-        .notice
-          = flash[:notice]
-      -if flash[:error]
-        %section.column.width4.first
-        .notice
-          = flash[:error]
+        %p.column.width1.login
+          - if logged_in?
+            Hi, #{current_user.name}
+            != link_to 'log out', session_path, :method => :delete
+          - else
+            != link_to 'log in/sign up', new_session_path
+    -if flash[:notice]
+      %section.column.width4.first
+      .notice
+        = flash[:notice]
+    -if flash[:error]
+      %section.column.width4.first
+      .notice
+    = flash[:error]
       != yield
-      %footer.column.width4.first
-        - if logged_in?
-          Hi, #{current_user.name}
-          != link_to 'log out', session_path, :method => :delete
-        - else
-          != link_to 'log in/sign up', new_session_path
+      %footer.column.width4.first.ruler
+        %p made at the Palomar5 Camp 2009
