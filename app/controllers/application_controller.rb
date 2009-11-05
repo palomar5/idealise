@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   
   def login_required
     return true if logged_in?
+    flash[:notice] = "You need to be logged in to do this."
     redirect_to new_session_path and return false
   end
 

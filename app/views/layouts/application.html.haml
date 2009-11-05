@@ -16,6 +16,14 @@
             != link_to 'Projects', projects_path
           %li
             Users
+      -if flash[:notice]
+        %section.column.width4.first
+        .notice
+          = flash[:notice]
+      -if flash[:error]
+        %section.column.width4.first
+        .notice
+          = flash[:error]
       != yield
       %footer.column.width4.first
         - if logged_in?

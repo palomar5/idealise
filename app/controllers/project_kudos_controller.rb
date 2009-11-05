@@ -1,5 +1,7 @@
 class ProjectKudosController < ResourceController::Base
   
+  before_filter :login_required
+  
   belongs_to :project
   
   def create

@@ -1,4 +1,5 @@
 - form_for(:feedback, :url => project_feedbacks_path(project), :class => 'column width3 first') do |f|
+  != f.error_messages
   %label.width3.multilinex3.first
     Give your Feedback:
     != f.text_area :text
