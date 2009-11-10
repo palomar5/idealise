@@ -1,7 +1,15 @@
 /* generic styles */
 
+a {
+  color: #069;
+}
+
+a:visited {
+  color: #034;
+}
+
 .box {
-  background: #f6f6f6;
+  background: #f6f9ff;
   border-top: 2px solid #000;
   border-bottom: 1px solid #999;
   padding: 9px 6px 8px 6px;
@@ -24,13 +32,40 @@ p.stroke_light, .meta p {
   text-indent: 0;
 }
 
+p.intro, .intro p {
+  font-family: HelveticaNeue-Light, Helvetica, Arial;
+  font-size: 32px;
+  line-height: 36px;
+  padding-bottom: 0;
+  padding-top: 9px;
+  text-indent: 0;
+}
+
+div.intro, h1+p.intro {
+  margin-top: 10px;
+}
+
+h1 {
+  font-family: HelveticaNeue-Light, Helvetica, Arial;
+  font-weight: bold;
+  color: #abc;
+}
+
+/* frame */
+
 /* header */
+
+#page>header {
+  border-bottom: 3px solid #000;
+  margin-bottom: 15px;
+  padding-bottom: 0;
+}
 
 .menu {
   list-style-type: none;
 }
 
-header .login {
+#page>header .login {
   margin-top: 18px;
   text-align: right;
 }
@@ -56,7 +91,7 @@ header .login {
 .form_advisor {
   padding: 2px 6px 2px 12px;
   width: 218px;
-  background: #ddd;
+  background: #cde;
 }
 
 .actions { 
@@ -79,6 +114,17 @@ header .login {
 .actions input:hover {
   background: #678;
   background: -webkit-gradient(linear, left top, left bottom, from(#567), to(#234));
+}
+
+/* home */
+
+.claim {
+  font-size: 84px;
+  letter-spacing: -0.05em;
+  line-height: 72px;
+  text-align: right;
+  top: 4px;
+  color: #d64;
 }
 
 /* projects */
@@ -117,4 +163,19 @@ ul.feedback {
 .super { color: #080;}
 .crap { color: #800;}
 
+/* footer */
 
+#page {
+  padding-bottom: 0;
+}
+
+#page>footer {
+  padding-bottom: 18px;
+  background: #000;
+}
+
+#page>footer p {
+  margin-bottom: 0;
+  padding-left: 12px;
+  color: #fff;
+}

@@ -1,3 +1,7 @@
+%h1.column.width4.first
+  = @project.title
+  - if logged_in? && current_user == @project.user
+    != link_to '(edit)', edit_project_path(@project)
 %section.width4.first
   .column.width1.first.stroke_heavy
     %h5 Project info
@@ -15,10 +19,6 @@
       - @project.tag_list.each do |tag|
         = tag
   .column.width2
-    %h2.width2.first
-      = @project.title
-      - if logged_in? && current_user == @project.user
-        != link_to '(edit)', edit_project_path(@project)
     %strong
       != simple_format(h(@project.short_description))
     != simple_format sanitize(@project.description)
