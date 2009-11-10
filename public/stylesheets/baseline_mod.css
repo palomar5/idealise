@@ -51,3 +51,7 @@ th:last-child, td:last-child {
 td {
   border-color: #ccc;
 }
+
+tr:nth-child(odd) td {
+  background: #f6f9ff;
+}

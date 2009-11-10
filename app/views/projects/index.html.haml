@@ -1,4 +1,5 @@
-%h2.width4.first Projects on idealise
+%h1.column.width1.first Projects on idealise
+%p.column.width2.intro All the latest and greatest stuff around here.
 
 %section.column.width3.first
 
@@ -16,8 +17,6 @@
             - if logged_in? && project.user == current_user
               != link_to 'Edit', edit_project_path(project)
               != link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
-
-  %p test
 
 %section.column.width1.stroke_heavy
   %h5 Actions
