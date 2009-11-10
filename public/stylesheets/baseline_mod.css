@@ -22,7 +22,8 @@ label.width1 input, label.width1 textarea, .width1>textarea { width: 224px; }
 label.width2 input, label.width2 textarea, .width2>textarea { width: 470px; }
 label.width3 input, label.width3 textarea, .width3>textarea { width: 716px; }
 label.width4 input, label.width4 textarea, .width4>textarea { width: 962px; }
-.multilinex4 textarea{ height: 72px }
+.multilinex4 textarea { height: 72px }
+.multilinex6 textarea { height: 108px }
 
 h4 { margin-bottom: 18px; }
 

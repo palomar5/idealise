@@ -1,0 +1,4 @@
+%strong Kudos:
+!= kudos_sparkline_tag(feedback.kudos_history, "ffffff")
+!= button_to "+", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1 )
+!= button_to "-", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1)

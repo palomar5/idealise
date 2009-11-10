@@ -1,23 +1,40 @@
 %li
-  .meta
-    - if feedback.user
-      != link_to feedback.user.try(:name) || "no name", feedback.user
-    != kudos_sparkline_tag(feedback.kudos_history, "ffffff")
-    #{feedback.created_at.to_s :short }
-    != button_to "+", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1 )
-    != button_to "-", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1)
+  .column.width1.first.meta
     - unless feedback.parent
+      != image_tag(gravatar_url(current_user), :class => "column unitx1 first")
+      .column.unitx1
+        - if feedback.user
+          %p!= link_to feedback.user.try(:name) || "no name", feedback.user
+        %p #{feedback.created_at.to_s :short }
+    - else
+      != render :partial => 'feedbacks/kudos', :locals => { :feedback => feedback }
+  .column.width2
+    != simple_format(h(feedback.text))
+  .column.width1
+    - unless feedback.parent
+      != render :partial => 'feedbacks/kudos', :locals => { :feedback => feedback }
       != link_to_function "reply", "$('#reply_on_project_#{feedback.project.id}').toggle('fast')"
-  != simple_format(h(feedback.text))
+    - else
+      .column.unitx1.first.meta
+        - if feedback.user
+          %p!= link_to feedback.user.try(:name) || "no name", feedback.user
+        %p #{feedback.created_at.to_s :short }
+      != image_tag(gravatar_url(current_user), :class => "column unitx1")
   - unless feedback.parent
-    - form_for(:feedback, :url => project_feedbacks_path(feedback.project), :html => { :class => 'column width3 first', :id => "reply_on_project_#{feedback.project.id}", :style => 'display:none;' }) do |f|
-      != hidden_field_tag :parent_id, feedback.id
-      != f.error_messages
-      %label.width3.multilinex3.first
-        Reply here:
-        != f.text_area :text
-      %p.width3.first.actions
-        != f.submit 'Submit'
+    %div(id="reply_on_project_#{feedback.project.id}" class="column width4" style="display:none;")
+      .column.width1.first
+        &nbsp;
+      - form_for(:feedback, :url => project_feedbacks_path(feedback.project), :html => { :class => 'column width2'}) do |f|
+        != hidden_field_tag :parent_id, feedback.id
+        != f.error_messages
+        .width2.multilinex6.first
+          != f.text_area :text
+          %p.actions
+            != f.submit 'Submit'
+      .column.width1
+        .column.unitx1.first
+          Reply here
+        != image_tag(gravatar_url(current_user), :class => "column unitx1")
 
   - unless feedback.children.empty?
     %ul.feedback.first

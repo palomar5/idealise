@@ -20,7 +20,7 @@
   border-top: 1px solid #ccc;
 }
 
-p.stroke_light {
+p.stroke_light, .meta p {
   text-indent: 0;
 }
 
@@ -47,6 +47,10 @@ header .login {
   border: 1px solid #432;
   background: #fe0;
   padding: 2px 4px;
+}
+
+.button-to, .button-to div {
+  display: inline;
 }
 
 .form_advisor {
@@ -102,14 +106,9 @@ ul.feedback {
 .feedback li {
   margin: 18px 0;
 }
-.feedback .meta {
-  font-weight:bold;
-}
-.feedback .meta form {
-  display: inline;
-}
-.feedback .meta form div {
-  display: inline;
+
+.feedback .meta p:first-child {
+  font-weight: bold;
 }
 
 /* kudos colors */
