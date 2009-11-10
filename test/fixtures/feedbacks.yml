@@ -3,7 +3,9 @@
 one:
   text: Feedback
   project: simple_project
+  user: simple_user
 threaded:
   text: Feedback
   project: simple_project
   parent: one
+  user: second

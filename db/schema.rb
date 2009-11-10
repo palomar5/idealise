@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091110125306) do
+ActiveRecord::Schema.define(:version => 20091110160206) do
 
   create_table "feedback_ratings", :force => true do |t|
     t.integer  "feedback_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20091110125306) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "visits_count"
   end
 
   create_table "sessions", :force => true do |t|
@@ -72,6 +73,15 @@ ActiveRecord::Schema.define(:version => 20091110125306) do
     t.string   "username"
     t.string   "email"
     t.string   "identifier"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+    t.integer  "rating_points"
+  end
+
+  create_table "visits", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

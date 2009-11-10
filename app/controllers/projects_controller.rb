@@ -7,4 +7,9 @@ class ProjectsController < ResourceController::Base
     object.save
   end
   
+  show.before do
+    object.add_visit(current_user)
+    true
+  end
+  
 end

@@ -15,7 +15,20 @@ class ProjectTest < ActiveSupport::TestCase
   end
   
   context "hot" do
-    projects = Project.hot
+    should "give hot projects" do
+      projects = Project.hot
+      assert_not_nil projects
+    end
   end
+  
+  context "visits count" do
+    should "add visits to the project" do
+      assert_difference "projects(:simple_project).reload.visits.size || 0" do
+        projects(:simple_project).add_visit
+      end
+    end
+  end
+  
+  
   
 end

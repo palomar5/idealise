@@ -8,7 +8,9 @@
     %p.stroke_light
       %strong
         Creation date:
-      = @project.created_at.to_date.to_formatted_s(:long)
+      = @project.created_at.to_date.to_formatted_s(:long)   
+    %p.stroke_light
+      #{@project.visits.size.to_i} Visits so far
     %p.tags.stroke_light
       - @project.tag_list.each do |tag|
         = tag

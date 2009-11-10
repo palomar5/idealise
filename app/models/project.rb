@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   has_many :feedbacks
   has_many :project_ratings
   belongs_to :user
+  has_many :visits
   
   validates_presence_of :description, :short_description, :title
 
@@ -19,6 +20,11 @@ class Project < ActiveRecord::Base
       :order => "count DESC"
     }.merge(options)
     ProjectRating.all(options).map(&:project)
+  end
+  
+  def add_visit(user = nil)
+    #self.update_attribute(:visits_count, (self.visits_count || 0) + 1)
+    self.visits.create(:user => user)
   end
   
 end
