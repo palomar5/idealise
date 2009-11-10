@@ -21,13 +21,11 @@
   %h2 Active users
   %table
     %tbody
-      - @respected_users.each do |ar|
-        - user = ar.first
-        - sum = ar.last
+      - @respected_users.each do |user|
         %tr
           %td
             !=link_to h(user.name), user
           %td
-            Kudos sum:
-            != sum
+            Helpfulness:
+            != user.rating_points
   
