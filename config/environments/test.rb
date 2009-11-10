@@ -30,3 +30,7 @@ config.action_mailer.delivery_method = :test
 config.gem "shoulda"
 config.gem "factory_girl"
 config.gem "mocha"
+
+class ActionMailer::Base
+  default_url_options[:host] = "example.com"
+end
