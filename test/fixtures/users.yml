@@ -6,3 +6,9 @@ simple_user:
   email: johndoe@example.com
   identifier: foobar
 
+second:
+  name: John Farr
+  username: johnfarr
+  email: johnfarr@example.com
+  identifier: foobar/3
+

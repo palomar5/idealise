@@ -3,8 +3,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session, :collection => { :rpx_token => :post }
 
-  map.resources :projects, :has_many => :project_kudos do |p|
+  map.resources :projects do |p|
     p.resources :feedbacks, :has_many => :feedback_ratings
+    p.resources :project_ratings
   end
 
   map.resources :users

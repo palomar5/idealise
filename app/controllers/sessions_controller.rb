@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   end
   
   def rpx_token
+    RPXNow.api_key = ENV['RPX_NOW_API_KEY']
     raise "hackers?" unless data = RPXNow.user_data(params[:token])
     self.current_user = User.find_by_identifier(data[:identifier]) || User.create!(data)
     redirect_to '/'

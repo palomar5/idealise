@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091105130127) do
+ActiveRecord::Schema.define(:version => 20091110101530) do
 
   create_table "feedback_ratings", :force => true do |t|
     t.integer  "feedback_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20091105130127) do
     t.integer  "user_id"
   end
 
-  create_table "project_kudos", :force => true do |t|
+  create_table "project_ratings", :force => true do |t|
     t.integer  "project_id"
     t.integer  "rating"
     t.integer  "user_id"

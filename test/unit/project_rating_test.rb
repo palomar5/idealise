@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProjectKudosTest < ActiveSupport::TestCase
+class ProjectRatingTest < ActiveSupport::TestCase
   should_belong_to :project
   should_belong_to :user
   
