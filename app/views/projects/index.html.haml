@@ -1,8 +1,8 @@
-%section.width4.first
-  %h2 Projects on idealise
+%h2.width4.first Projects on idealise
 
+%section.column.width3.first
 
-  %table
+  %table.width3.first
     %tbody
       - @projects.each do |project|
         %tr
@@ -11,11 +11,15 @@
           %td
             != kudos_sparkline_tag(project.kudos_history, cycle("f6f6f6", "ffffff")) unless project.kudos_history.empty?
           %td
-            = truncate(project.short_description, :length => 200)
+            = truncate(project.short_description, :length => 140)
           %td
             - if logged_in? && project.user == current_user
               != link_to 'Edit', edit_project_path(project)
               != link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
 
+  %p test
+
+%section.column.width1.stroke_heavy
+  %h5 Actions
   %p
     != link_to 'New project', new_project_path

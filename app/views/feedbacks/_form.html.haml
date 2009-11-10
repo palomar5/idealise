@@ -1,7 +1,10 @@
-- form_for(:feedback, :url => project_feedbacks_path(project), :html => { :class => 'column width3 first' }) do |f|
+- form_for(:feedback, :url => project_feedbacks_path(project), :html => { :class => 'width4 first feedback_form' }) do |f|
   != f.error_messages
-  %label.width3.multilinex3.first
-    Give your Feedback here:
+  .column.width1.multilinex3.first
+    %img.column.unitx1.first(src="/public/images/rails.png")
+    %p.column.unitx1
+      Give your Feedback here:
+  .column.width2.multilinex4
     != f.text_area :text
-  %p.width3.first.actions
+  .column.width1.actions
     != f.submit 'Submit'

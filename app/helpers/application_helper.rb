@@ -17,7 +17,7 @@ module ApplicationHelper
   
   def kudos_sparkline_tag(kudos_data, background_color)
     label_color = "990000"
-    base_url = "http://chart.apis.google.com/chart?cht=lc&chs=50x20&chco=000000&chf=bg,s,#{background_color}&chls=1,1,0&chm=o,#{label_color},0,20,4&chxp=0,#{kudos_data.last}&chxt=r,x,y&chxs=0,990000,11,0,_|1,990000,1,0,_|2,990000,1,0,_"
+    base_url = "http://chart.apis.google.com/chart?cht=lc&chs=50x12&chco=000000&chf=bg,s,#{background_color}&chls=1,1,0&chm=o,#{label_color},0,20,4&chxp=0,#{kudos_data.last}&chxt=r,x,y&chxs=0,990000,11,0,_|1,990000,1,0,_|2,990000,1,0,_"
     image_tag("#{base_url}&chd=t:#{kudos_data.join(',')}")
   end
   

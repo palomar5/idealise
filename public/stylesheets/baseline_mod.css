@@ -18,6 +18,35 @@
 
 form { overflow: visible;}
 
-label.width3 input, label.width3 textarea { width: 716px; }
+label.width1 input, label.width1 textarea, .width1>textarea { width: 224px; }
+label.width2 input, label.width2 textarea, .width2>textarea { width: 470px; }
+label.width3 input, label.width3 textarea, .width3>textarea { width: 716px; }
+label.width4 input, label.width4 textarea, .width4>textarea { width: 962px; }
+.multilinex4 textarea{ height: 72px }
 
 h4 { margin-bottom: 18px; }
+
+
+table {
+  border-top: 2px solid rgb(0, 0, 0);
+  border-bottom: 1px solid rgb(0, 0, 0);
+  margin-top: 15px;
+  margin-bottom: 19px;
+  padding-bottom: 0;
+}
+
+th, tr:first-child td {
+  border-top: none;
+}
+
+th:first-child, td:first-child {
+  padding-left: 6px;
+}
+
+th:last-child, td:last-child {
+  padding-right: 6px;
+}
+
+td {
+  border-color: #ccc;
+}

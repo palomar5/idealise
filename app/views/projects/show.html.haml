@@ -1,27 +1,40 @@
 %section.width4.first
-  %h4
-    = @project.title
-    - if logged_in? && current_user == @project.user
-      != link_to '(edit)', edit_project_path(@project)
-  %p
-    != kudos_sparkline_tag(@project.kudos_history, "ffffff")
-  %ul.tags
-    - @project.tag_list.each do |tag|
-      %li= tag
-  .short-description.first
+  .column.width1.first.stroke_heavy
+    %h5 Project info
+    %p.stroke_light
+      %strong
+        Author:
+      = @project.user.try(:name) || "no name"
+    %p.stroke_light
+      %strong
+        Creation date:
+      = @project.created_at.to_date.to_formatted_s(:long)
+    %p.tags.stroke_light
+      - @project.tag_list.each do |tag|
+        = tag
+  .column.width2
+    %h2.width2.first
+      = @project.title
+      - if logged_in? && current_user == @project.user
+        != link_to '(edit)', edit_project_path(@project)
     %strong
       != simple_format(h(@project.short_description))
-  .description
-    != sanitize(@project.description)
+    != simple_format sanitize(@project.description)
+  .column.width1.stroke_heavy
+    %h5 Kudos
+    %p
+      != kudos_sparkline_tag(@project.kudos_history, "ffffff")
+    - if logged_in?
+      %p.stroke_light
+        Give Kudos: 
+        != button_to "+", project_project_ratings_path(@project, :rating => 1), :method => :post
+        != button_to "-", project_project_ratings_path(@project, :rating => -1), :method => :post
 
-- if logged_in?
-  .ruler.width3.first.kudos
-    %p Give Kudos: 
-    != button_to "+", project_project_ratings_path(@project, :rating => 1), :method => :post
-    != button_to "-", project_project_ratings_path(@project, :rating => -1), :method => :post
-    %section.width4.first
-      != render :partial => 'feedbacks/form', :locals => { :project => @project }
+%section.width4.first.stroke_heavy
+  %h2 Feedback
+  - if logged_in?
+    != render :partial => 'feedbacks/form', :locals => { :project => @project }
 
-    %section.width4.first
-      %ul.width3.first.feedback
-        != render :partial => 'feedbacks/feedback', :collection => @project.feedbacks.root
+%section.width4.first
+  %ul.width3.first.feedback
+    != render :partial => 'feedbacks/feedback', :collection => @project.feedbacks.root
