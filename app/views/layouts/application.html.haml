@@ -5,6 +5,8 @@
     %title #{@page_title} - Idealise it
     != yield :head
     != javascript_include_tag 'jquery-1.3.2.min.js'
+    != javascript_include_tag 'jquery-advisor.js'
+    != javascript_include_tag 'application.js'
   %body
     #page
       %header.column.width4.first
@@ -32,5 +34,5 @@
           .notice
             = flash[:error]
       != yield
-      %footer.column.width4.first.ruler
+      %footer.column.width4.first.stroke_heavy
         %p made at the Palomar5 Camp 2009

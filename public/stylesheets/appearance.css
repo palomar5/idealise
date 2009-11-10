@@ -1,20 +1,27 @@
 /* generic styles */
 
 .box {
-  background: #eee;
-  border: 1px solid #ccc;
-  padding: 17px 12px;
-  margin-bottom: 18px;
+  background: #f6f6f6;
+  border-top: 2px solid #000;
+  border-bottom: 1px solid #999;
+  padding: 9px 6px 8px 6px;
+  margin: 7px 0 27px 0;
 }
 
-.ruler {
+.stroke_heavy {
   margin-top: 12px;
   padding-top: 4px;
-  border-top: 2px solid #cde;
+  border-top: 2px solid #000;
 }
 
-th {
-  border-top: none;
+.stroke_light {
+  margin-top: 12px;
+  padding-top: 5px;
+  border-top: 1px solid #ccc;
+}
+
+p.stroke_light {
+  text-indent: 0;
 }
 
 /* header */
@@ -39,9 +46,36 @@ header .login {
 .notice {
   border: 1px solid #432;
   background: #fe0;
-  padding:2px 4px;
+  padding: 2px 4px;
 }
-.actions { text-align:right; }
+
+.form_advisor {
+  padding: 2px 6px 2px 12px;
+  width: 218px;
+  background: #ddd;
+}
+
+.actions { 
+  text-align: right;
+}
+
+.actions input {
+  background: #678;
+  background: -webkit-gradient(linear, left top, left bottom, from(#789), to(#456));
+  margin-top: -1px;
+  -webkit-border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0 -1px 2px rgba(1, 1, 1, 0.35);
+  color: #fff;
+  border: none;
+}
+
+.actions input:hover {
+  background: #678;
+  background: -webkit-gradient(linear, left top, left bottom, from(#567), to(#234));
+}
 
 /* projects */
 
@@ -55,6 +89,10 @@ ul.tags li { display:block; border:1px solid #432; float:left; background:#fe0 ;
 
 .kudos input {
   margin-left: 0;
+}
+
+.feedback_form img {
+  height: 105px;
 }
 
 ul.feedback {

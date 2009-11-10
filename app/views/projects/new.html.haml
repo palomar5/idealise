@@ -1,10 +1,13 @@
-%section.width3.first
-  %h4 Add a project
+%h2.width4.first Add a project
+%section.column.width3.first
   %p.box Write your concept below. Start with a 30 word description, fill us in on the details, and upload supporting documents. Try to be precise. Finish up with what kind of feedback you might be interested in.
 
   - form_for(@project,nil, :class => 'column width3 first') do |f|
     != render :partial => 'form', :locals => { :f  => f }
-    %p.actions.width3.first
+    %p.actions.width2.first
       != f.submit 'Create'
       or
       != link_to 'Cancel', projects_path
+
+%section.column.width1.stroke_heavy
+  %h5 Extras

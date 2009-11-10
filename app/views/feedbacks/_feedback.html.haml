@@ -11,7 +11,7 @@
   != simple_format(h(feedback.text))
   - unless feedback.parent
     - form_for(:feedback, :url => project_feedbacks_path(feedback.project), :html => { :class => 'column width3 first', :id => "reply_on_project_#{feedback.project.id}", :style => 'display:none;' }) do |f|
-      != hidden_field_tag :parent_id, feedback.project.id
+      != hidden_field_tag :parent_id, feedback.id
       != f.error_messages
       %label.width3.multilinex3.first
         Reply here:
@@ -21,5 +21,5 @@
 
   - unless feedback.children.empty?
     %ul.feedback.first
-      != render :partial => 'feedbacks/feedback', :collection => feedback.children, :as => :feedback
+      != render :partial => 'feedbacks/feedback', :collection => feedback.children
     

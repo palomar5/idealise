@@ -1,14 +1,14 @@
 != f.error_messages
 
-%label.first.width3
+%label.first.width2
   Title
-  != f.text_field :title
-%label.first.width3.multilinex3
+  != f.text_field :title, :title => 'Give it a sweet name!', :class => 'show_advice'
+%label.first.width2.multilinex3
   Short summary
-  != f.text_area :short_description
-%label.first.width3.multilinex6
+  != f.text_area :short_description, :title => 'Describe it shortly!', :class => 'show_advice'
+%label.first.width2.multilinex6
   Description
-  != f.text_area :description
-%label.first.width3
+  != f.text_area :description, :title => 'Tell us all the interesting stuff about it!', :class => 'show_advice'
+%label.first.width2
   Tags
-  != f.text_field :tag_list
+  != f.text_field :tag_list, :title => 'Taaaag it!', :class => 'show_advice'

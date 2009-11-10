@@ -1,9 +1,9 @@
-%section.width4.first
-  %h4 Edit your project
+%h2.width4.first Edit your project
+%section.width3.first
 
   - form_for(@project,nil, :class => 'column width3 first') do |f|
     != render :partial => 'form', :locals => { :f  => f }
-    %p.actions.width3.first
+    %p.actions.width2.first
       != f.submit 'Save'
       or
       != link_to 'Cancel', projects_path
