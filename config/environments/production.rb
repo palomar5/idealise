@@ -36,7 +36,7 @@ ActionMailer::Base.smtp_settings = {
   :port  => 587,
   :user_name  => "idealisep5@googlemail.com",
   :authentication => :plain,
-  :domain => 'localhost.localdomain'
+  :domain => 'localhost.localdomain',
   :password  => "Palomar5",
   :authentication  => :login
 }
