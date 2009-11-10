@@ -38,10 +38,14 @@
       %h2 Request Feedback
       != render :partial => 'feedback_requests/form'
       %h2 Feedback
-  - else 
-    %h2 Feedback
-    != render :partial => 'feedbacks/form', :locals => { :project => @project }
-
+    - else 
+      %h2 Feedback
+      != render :partial => 'feedbacks/form', :locals => { :project => @project }
+- else
+  %section.width4.first.stroke_heavy
+    .notice
+      You are not logged in, so you can't give feedback on this project. Go ahead,
+      != link_to "you can do it, too!", new_session_path 
 %section.width4.first
   %ul.width3.first.feedback
     != render :partial => 'feedbacks/feedback', :collection => @project.feedbacks.root

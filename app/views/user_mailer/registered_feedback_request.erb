@@ -1,0 +1,24 @@
+Hi <%= @receiver.name %>,
+
+<%= @project.user.name || @project.user.username %> would like to ask you for feedback on an idea.
+
+<%- unless @text.blank? -%>
+He also left you a message:
+---  
+<%= @text %>
+---
+<%- end -%>
+
+Project details:
+
+<%= @project.title %>
+
+<%= @project.description %>
+
+If you would like to give feedback on this, you can go to <%= project_url(@project) %>
+
+If you don't want to be bothered, feel free to ignore this email.
+
+-- 
+the IDEALISE team.
+
