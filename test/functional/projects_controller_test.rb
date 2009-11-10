@@ -26,6 +26,12 @@ class ProjectsControllerTest < ActionController::TestCase
     get :show, :id => projects(:simple_project).to_param
     assert_response :success
   end
+  
+  test "should add visit to project when show" do
+    assert_difference "projects(:simple_project).reload.visits_count || 0" do
+      get :show, :id => projects(:simple_project).to_param
+    end
+  end
 
   test "should get edit" do
     login_user(:simple_user)

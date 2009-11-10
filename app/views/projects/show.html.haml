@@ -4,6 +4,8 @@
     - if logged_in? && current_user == @project.user
       != link_to '(edit)', edit_project_path(@project)
   %p
+    #{@project.visits.size.to_i} Visits so far
+  %p
     != kudos_sparkline_tag(@project.kudos_history, "ffffff")
   %ul.tags
     - @project.tag_list.each do |tag|
