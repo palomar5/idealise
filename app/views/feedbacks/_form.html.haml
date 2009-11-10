@@ -1,7 +1,7 @@
 - form_for(:feedback, :url => project_feedbacks_path(project), :html => { :class => 'width4 first feedback_form' }) do |f|
   != f.error_messages
   .column.width1.multilinex3.first
-    %img.column.unitx1.first(src="/public/images/rails.png")
+    != image_tag(gravatar_url(current_user), :class => "column unitx1 first")
     %p.column.unitx1
       Give your Feedback here:
   .column.width2.multilinex4
