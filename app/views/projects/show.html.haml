@@ -1,29 +1,35 @@
-%section.width4.first
-  %h4
-    = @project.title
-    - if logged_in? && current_user == @project.user
-      != link_to '(edit)', edit_project_path(@project)
+%section.column.width3.first
+  %section.width3.first
+    %h4
+      = @project.title
+      - if logged_in? && current_user == @project.user
+        != link_to '(edit)', edit_project_path(@project)
+    .short-description.first
+      %strong
+        != simple_format(h(@project.short_description))
+    .description
+      != sanitize(@project.description)
+
+  - if logged_in?
+    - if @project.user == current_user
+      %h5 Request feedback from experts
+      != render :partial => 'feedback_requests/form'
+    - else
+      .ruler.width3.first.kudos
+        %p Give Kudos: 
+        != button_to "+", project_project_ratings_path(@project, :rating => 1), :method => :post
+        != button_to "-", project_project_ratings_path(@project, :rating => -1), :method => :post
+        %section.width4.first
+          != render :partial => 'feedbacks/form', :locals => { :project => @project }
+
+    %section.width4.first
+      %ul.width3.first.feedback
+        != render :partial => 'feedbacks/feedback', :collection => @project.feedbacks.root
+%section.column.width1
   %p
     #{@project.visits.size.to_i} Visits so far
   %p
     != kudos_sparkline_tag(@project.kudos_history, "ffffff")
   %ul.tags
     - @project.tag_list.each do |tag|
-      %li= tag
-  .short-description.first
-    %strong
-      != simple_format(h(@project.short_description))
-  .description
-    != sanitize(@project.description)
-
-- if logged_in?
-  .ruler.width3.first.kudos
-    %p Give Kudos: 
-    != button_to "+", project_project_ratings_path(@project, :rating => 1), :method => :post
-    != button_to "-", project_project_ratings_path(@project, :rating => -1), :method => :post
-    %section.width4.first
-      != render :partial => 'feedbacks/form', :locals => { :project => @project }
-
-    %section.width4.first
-      %ul.width3.first.feedback
-        != render :partial => 'feedbacks/feedback', :collection => @project.feedbacks.root
+      %li= tag    

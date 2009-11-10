@@ -1,0 +1,16 @@
+- form_for(:feedback_request, :url => feedback_requests_path) do |f|
+  - if @project
+    != hidden_field_tag :project_id, @project.id
+    %label.first.width2.multilinex3
+      Who do you want to introduce to your project? Give us some email addresses (one per line).
+      != text_area_tag :receivers
+  - elsif @user
+    != hidden_field_tag :user_id, @user.id
+    %label.first.width1
+      Choose one of your projects:
+      != select_tag :project_id, options_from_collection_for_select(@user.projects, 'id', 'title')
+  %label.first.width2.multilinex3
+    Do you want to add a personal message? Staying concise while beeing polite will raise your chances of getting people to give feedback:
+    != f.text_area :text
+  %p.first
+    != f.submit "Send request"
