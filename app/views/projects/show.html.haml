@@ -23,4 +23,5 @@
       != render :partial => 'feedbacks/form', :locals => { :project => @project }
 
     %section.width4.first
-      != render :partial => 'feedbacks/list', :locals => { :project => @project }
+      %ul.width3.first.feedback
+        != render :partial => 'feedbacks/feedback', :collection => @project.feedbacks.root

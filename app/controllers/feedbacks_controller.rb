@@ -5,7 +5,11 @@ class FeedbacksController < ResourceController::Base
   belongs_to :project
 
   def create
-    @feedback = parent_object.feedbacks.build(params[:feedback])
+    if params[:parent_id] && parent = parent_object.feedbacks.find(params[:parent_id])
+      @feedback = parent.children.build(params[:feedback].merge({:project => parent_object }))
+    else
+      @feedback = parent_object.feedbacks.build(params[:feedback])
+    end
     @feedback.user = current_user
     if @feedback.save
       flash[:notice] = "Thanks for the feedback, mate"
@@ -14,7 +18,6 @@ class FeedbacksController < ResourceController::Base
       @project = parent_object
       render 'projects/show'
     end
-    
   end
 
   create.wants.html { redirect_to smart_url(parent_url_options) }
