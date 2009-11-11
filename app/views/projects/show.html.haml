@@ -32,12 +32,13 @@
         != button_to "+", project_project_ratings_path(@project, :rating => 1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => 1, :format => 'json')
         != button_to "-", project_project_ratings_path(@project, :rating => -1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => -1, :format => 'json')
 
-  %h2 Feedback
-    .width4.first
-      Tagged with: 
-      %ul.tags
-        - @project.feedback_tags.each do |tag|
-          != link_to_unless_current tag, project_path(@project, :tag => tag)
+  %h2.width4.first 
+    Feedback
+  .width4.first
+    Tagged with: 
+    %ul.tags
+      - @project.feedback_tags.each do |tag|
+        != link_to_unless_current tag, project_path(@project, :tag => tag)
   - if logged_in?
     - if current_user == @project.user
       != render :partial => 'feedback_requests/form'
