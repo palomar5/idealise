@@ -9,6 +9,7 @@ class Feedback < ActiveRecord::Base
   has_many :feedback_ratings
   
   named_scope :root, :conditions => { :parent_id => nil }
+
   
   validates_presence_of :text
   
