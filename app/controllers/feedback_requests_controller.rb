@@ -4,7 +4,6 @@ class FeedbackRequestsController < ApplicationController
   def create
     project = Project.find(params[:project_id])
     if params[:user_id] && user = User.find_by_id(params[:user_id])
-      puts user.inspect
       FeedbackRequest.create(params[:feedback_request].merge(:project => project, :user => current_user, :receiver => user))
     else
       receivers = params[:receivers].split(/,|\r\n|\n|\r/).map(&:strip)

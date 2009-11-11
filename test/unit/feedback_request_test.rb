@@ -18,7 +18,7 @@ class FeedbackRequestTest < ActiveSupport::TestCase
     end
   end
 
-  should "send email on creation" do
+  should "send email on creation for foreign user" do
     assert_difference "ActionMailer::Base.deliveries.size" do
       request = FeedbackRequest.create(:project => projects(:simple_project), :user => users(:simple_user), :text => 'foo', :receiver_email => "crazy@example.com")
     end

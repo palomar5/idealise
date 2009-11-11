@@ -1,4 +1,5 @@
 class ProjectRatingsController < ResourceController::Base
+  include ApplicationHelper
   
   before_filter :login_required
   
@@ -10,6 +11,9 @@ class ProjectRatingsController < ResourceController::Base
       kudos.rating = params[:rating].to_i
       kudos.save
     end
-    redirect_to smart_url(parent_url_options)
+    respond_to do |format|
+      format.html { redirect_to smart_url(parent_url_options) }
+      format.json { render :json => { :toReplace => { "project_#{parent_object.id}_kudos" => kudos_sparkline_tag(parent_object.reload.kudos_history, "ffffff") } }.to_json }
+    end
   end
 end
