@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091111113343) do
+ActiveRecord::Schema.define(:version => 20091111200732) do
 
   create_table "feedback_ratings", :force => true do |t|
     t.integer  "feedback_id"
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(:version => 20091111113343) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "visits_count"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "sessions", :force => true do |t|

@@ -1,6 +1,13 @@
 class Project < ActiveRecord::Base
   acts_as_taggable_on :tags
 
+  has_attached_file :image, 
+    :styles => { :medium => "228x234#", :thumb => "105x72#"},
+    :storage => (Rails.env == 'production') ? :s3 : :filesystem,
+    :s3_credentials => {:access_key_id => ENV['S3_ACCESS_KEY_ID'], :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']},
+    :bucket => 'idealise-production-images',
+    :path => (Rails.env == 'production') ? ":attachment/:id/:style.:extension" : ":rails_root/public:url"
+
   has_many :feedbacks
   has_many :project_ratings
   belongs_to :user
