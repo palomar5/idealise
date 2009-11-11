@@ -1,0 +1,25 @@
+%section.width4.first
+  %h1.column.width4.first
+    Edit your profile (#{@user.username})
+  - form_for @user, :url => profile_path, :html => {:method => :put, :class => 'width4 column first'} do |f|
+    .width4.first
+      != f.error_messages
+    .width2.first.column
+      %label.width2.first
+        Name:
+        != f.text_field :name
+      %label.width2.first
+        Email:
+        != f.text_field :email
+      %label.width2.first
+        Tag yourself:
+        != f.text_field :tag_list
+    .width2.column
+      %label.width2.first.multilinex4
+        Describe yourself in a few sentences:
+        != f.text_area :description
+    %p.width4.actions.first
+      != f.submit "Save your Profile"
+      or
+      != link_to "cancel", @user
+    

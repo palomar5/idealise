@@ -1,6 +1,12 @@
 %h1.column.width4.first
   = @user.name
   (#{@user.username})
+  - if logged_in? && @user == current_user
+    != link_to "(edit your profile)", edit_profile_path()
+%section.width4.first
+  %ul.tags
+    - @user.tag_list.each do |tag|
+      %li= tag
 %section.width4.first
     
   %p Ideas on what could be here: The users' projects, the latest feedbacks the user has given, ranking/kudos information

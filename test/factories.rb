@@ -1,7 +1,6 @@
 Factory.define(:project) do |f|
   f.title "a cool project title"
   f.user { |a| a.association(:user) }
-  f.short_description "short"
   f.description "a long dingy dingy"
 end
 
