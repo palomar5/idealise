@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :visits
   
-  validates_presence_of :description, :short_description, :title
+  validates_presence_of :description, :title
 
   def kudos_history
     running = 0
