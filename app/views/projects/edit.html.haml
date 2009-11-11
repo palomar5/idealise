@@ -1,6 +1,6 @@
 %h1.column.width4.first Edit your project
 %section.column.width3.first
-  - form_for(@project,nil, :class => 'column width3 first') do |f|
+  - form_for(@project,nil, :html => {:class => 'column width3 first', :multipart => true}) do |f|
     != render :partial => 'form', :locals => { :f  => f }
     %p.actions.width2.first
       != f.submit 'Save'
