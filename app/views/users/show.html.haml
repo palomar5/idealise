@@ -4,4 +4,7 @@
 %section.width4.first
     
   %p Ideas on what could be here: The users' projects, the latest feedbacks the user has given, ranking/kudos information
-    
+  - if logged_in?
+    %section.width3.first
+      %h5 Request this users feedback on one of your projects
+      != render :partial => 'feedback_requests/form'

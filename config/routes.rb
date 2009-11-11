@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :feedback_requests
+
   map.resources :feedback_ratings
 
   map.resource :session, :collection => { :rpx_token => :post }

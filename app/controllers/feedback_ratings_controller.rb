@@ -1,5 +1,7 @@
 class FeedbackRatingsController < ResourceController::Base
   
+  include ApplicationHelper
+  
   before_filter :login_required
   
   belongs_to :feedback
@@ -10,7 +12,14 @@ class FeedbackRatingsController < ResourceController::Base
       rating.rating = params[:rating].to_i
       rating.save
     end
-    redirect_to project_url(parent_object.project)
+    respond_to do |format|
+      format.html { redirect_to project_url(parent_object.project) }
+      format.json { 
+        render :json => { 
+          :toReplace => { "feedback_#{parent_object.id}_kudos" => kudos_sparkline_tag(parent_object.reload.kudos_history, "ffffff") } 
+        }.to_json
+      }
+    end
   end
   
   

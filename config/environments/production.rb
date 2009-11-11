@@ -26,3 +26,22 @@ config.action_view.cache_template_loading            = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+config.action_mailer.delivery_method = :smtp
+
+require 'smtp_tls'
+
+ActionMailer::Base.smtp_settings = {
+  :address  => "smtp.gmail.com",
+  :port  => 587,
+  :user_name  => "idealisep5@googlemail.com",
+  :authentication => :plain,
+  :domain => 'localhost.localdomain',
+  :password  => "Palomar5",
+  :authentication  => :login
+}
+
+class ActionMailer::Base
+  default_url_options[:host] = "afternoon-earth-12.heroku.com"
+end
+
