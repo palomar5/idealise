@@ -1,7 +1,27 @@
-%h1.column.width4.first All users
-%section.width4.first
-  %ul
-    - @users.each do |user|
-      %li!= link_to user.name, user
-  %p NOTE: This would be a smash place to show the most bestest users, the latest new users, whatever.
-  
+%h1.column.width4.first Users on idealise
+
+
+%section.column.width3.first
+
+  %table.width3.first
+    %thead
+      %tr
+        %th Name
+        %th Description
+        %th Expert rating
+        %th Tags
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td
+            !=link_to h(user.name), user
+          %td
+            = truncate(user.description, :length => 140)
+          %td
+            %span{:class => color_class_for_kudos(user.rating_points)}
+              = user.rating_points
+          %td
+            = user.tag_list.join(", ")
+          %td
+            - if logged_in? && user == current_user
+              != link_to 'Edit', edit_profile_path
