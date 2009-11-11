@@ -1,11 +1,10 @@
 /* generic styles */
 
 .box {
-  background: #f6f9ff;
-  border-top: 2px solid #000;
-  border-bottom: 1px solid #999;
-  padding: 9px 6px 8px 6px;
-  margin: 7px 0 27px 0;
+  background: #d64 url(/images/nose_top.png) no-repeat;
+  padding: 22px 12px 10px 12px;
+  margin: -5px 0 27px 0;
+  color: #fff;
 }
 
 .stroke_heavy {
@@ -79,9 +78,10 @@ h1 {
 }
 
 .form_advisor {
-  padding: 2px 6px 2px 12px;
-  width: 218px;
-  background: #cde;
+  padding: 3px 6px 3px 18px;
+  width: 212px;
+  background: #d64 url(/images/nose_left.png) no-repeat;
+  color: #fff;
 }
 
 .actions { 
@@ -131,16 +131,51 @@ ul.tags li { display:block; border:1px solid #432; float:left; background:#fe0 ;
   margin-left: 0;
 }
 
-.feedback_form img {
+.feedback_form>div.width2, .feedback div.width2 {
+  margin-left: 6px;
+  padding: 3px 6px 15px 24px;
+  width: 456px;
+}
+
+.feedback_form>.width2 {
+  background: #d64 url(/images/nose_left.png) no-repeat;
+  color: #fff;
+}
+
+.feedback_form label.width2, .feedback_form label.width2,
+.feedback_form label.width2 input, .feedback_form label.width2 textarea, .feedback_form .width2>textarea,
+.feedback_form .width2.actions, .feedback .width2.actions {
+  width: 444px;
+}
+
+img.avatar {
   height: 105px;
+  padding-bottom: 3px;
 }
 
 ul.feedback {
-  list-style-type: none
+  list-style-type: none;
+  top: 0;
 }
 
 .feedback li {
   margin: 18px 0;
+}
+
+.feedback .width2.original {
+  background: #E0E3E6 url(/images/nose_feedback_left.png) no-repeat;
+}
+
+.feedback .width2.answer {
+  margin-right: -12px;
+  margin-left: 18px;
+  padding: 3px 30px 15px 12px;
+  width: 444px;
+  background: #E0E3E6 url(/images/nose_feedback_right.png) top right no-repeat;
+}
+
+.feedback li p:first-child {
+  padding-top: 5px;
 }
 
 .feedback .meta p:first-child {

@@ -1,11 +1,14 @@
 - form_for(:feedback, :url => project_feedbacks_path(project), :html => { :class => 'width4 first feedback_form' }) do |f|
   != f.error_messages
   .column.width1.first
-    != image_tag(gravatar_url(current_user), :class => "column unitx1 first")
+    != image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar")
     %p.column.unitx1
-      Give your Feedback here:
-  .column.width2.multilinex6
-    != f.text_area :text
+      %strong
+        Your feedback on the project:
+  .column.width2
+    %label.width2.multilinex6.first
+      Please be as specific as possible!
+      != f.text_area :text
     %label.width2.first
       Add some tags:
       != f.text_field :tag_list

@@ -31,23 +31,18 @@
         Give Kudos:
         != button_to "+", project_project_ratings_path(@project, :rating => 1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => 1, :format => 'json')
         != button_to "-", project_project_ratings_path(@project, :rating => -1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => -1, :format => 'json')
-- if logged_in?
-  - if current_user == @project.user
-    %section.width4.first.stroke_heavy
-      %h2 Request Feedback
+
+%section.width4.first.stroke_heavy
+  %h2 Feedback
+  - if logged_in?
+    - if current_user == @project.user
       != render :partial => 'feedback_requests/form'
-    %section.width4.first.stroke_heavy
-      %h2 Feedback
-  - else
-    %section.width4.first.stroke_heavy
-      %h2 Feedback
+    - else
       != render :partial => 'feedbacks/form', :locals => { :project => @project }
-- else
-  %section.width4.first.stroke_heavy
-    %h2 Feedback
+  - else
     .notice
       You are not logged in, so you can't give feedback on this project. Go ahead,
-      != link_to "you can do it, too!", new_session_path 
-%section.width4.first
-  %ul.width4.first.feedback
+      != link_to "you can do it, too!", new_session_path
+      
+  %ul.column.width4.first.feedback
     != render :partial => 'feedbacks/feedback', :collection => @project.feedbacks.root
