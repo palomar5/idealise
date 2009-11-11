@@ -21,8 +21,6 @@
       - @project.tag_list.each do |tag|
         = tag
   .column.width2
-    %strong
-      != simple_format(h(@project.short_description))
     != simple_format sanitize(@project.description)
   .column.width1.stroke_heavy
     %h5 Kudos

@@ -3,6 +3,5 @@
 simple_project:
   user: simple_user
   title: This is a simple Project
-  short_description: This is a simple short description
   description: This is a long description
   
