@@ -21,5 +21,5 @@ class FeedbacksController < ResourceController::Base
   end
 
   create.wants.html { redirect_to smart_url(parent_url_options) }
-  
+  update.wants.html { redirect_to smart_url(parent_url_options) }
 end

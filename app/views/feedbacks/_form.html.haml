@@ -6,9 +6,8 @@
       Give your Feedback here:
   .column.width2.multilinex6
     != f.text_area :text
-  .column.width1
-    %label.width1.first
+    %label.width2.first
       Add some tags:
       != f.text_field :tag_list
-    .width1.first.actions
+    %p.width2.actions.first
       != f.submit 'Submit'
