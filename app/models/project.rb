@@ -27,4 +27,8 @@ class Project < ActiveRecord::Base
     self.visits.create(:user => user)
   end
   
+  def feedback_tags
+    self.feedbacks.root.map(&:tag_list).flatten.uniq
+  end
+  
 end

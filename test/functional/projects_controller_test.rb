@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
+    
   test "should get index" do
     get :index
     assert_response :success
@@ -22,9 +23,17 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_redirected_to project_path(assigns(:project))
   end
 
-  test "should show project" do
-    get :show, :id => projects(:simple_project).to_param
-    assert_response :success
+
+  context "show action" do
+    should "show project" do
+      get :show, :id => projects(:simple_project).to_param
+      assert_response :success
+    end
+    should "filter feedbacks by tags" do
+      projects(:simple_project).feedbacks.create(:user => users(:second), :text => 'waa', :tag_list => 'funk')
+      get :show, :id => projects(:simple_project).to_param, :tag => 'funk'
+      assert !assigns(:first_level_feedbacks).empty?      
+    end
   end
   
   test "should add visit to project when show" do

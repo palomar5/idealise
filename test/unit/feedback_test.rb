@@ -23,6 +23,15 @@ class FeedbackTest < ActiveSupport::TestCase
       assert @feedback.respond_to?(:tag_list=)
       assert @feedback.respond_to?(:tag_list)
     end
+    
+    should "find feedbacks by tags" do
+      feedback = feedbacks(:one)
+      feedback.tag_list = "foo, bar"
+      feedback.save
+      
+      assert Feedback.find_tagged_with("foo").include?(feedback)
+    end
+    
   end
   
 end
