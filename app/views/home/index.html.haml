@@ -8,28 +8,31 @@
       %p Get instant feedback for your project.
       %p Build your reputation as a trusted advisor.
       %p Discover the smartest teams in the world.
+      %p!= link_to 'Sign up and join in!', new_user_path
   .column.width2.video
-.column.width4.first.stroke_heavy
-  %section.column.width2.first
-    %h2 Hot projects
-    %table
-      %tbody
-        - @hot_projects.each do |project|
-          %tr
-            %td
+.column.width4.first.stroke_heavy.home
+  %section.column.width2.first.projects
+    %h2.column.width2.first Hot projects
+    %ul.column.width2.first
+      - @hot_projects.each do |project|
+        %li.column.width2.first
+          .column.unitx1.first
+            %img(src="/images/empty.png")
+          .column.unitx3
+            %h6
+              != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x18") unless project.kudos_history.empty?
               !=link_to h(project.title), project
-            %td
-              != kudos_sparkline_tag(project.kudos_history, cycle("f6f9fc", "ffffff")) unless project.kudos_history.empty?
+            %p= truncate(project.description, :length => 140)
   
-  %section.column.width2
-    %h2 Active users
-    %table
-      %tbody
-        - @respected_users.each do |user|
-          %tr
-            %td
+  %section.column.width2.users
+    %h2.column.width2.first Trusted users
+    %ul.column.width2.first
+      - @respected_users.each do |user|
+        %li.column.width2.first
+          .column.unitx1.first
+            %img(src="/images/empty.png")
+          .column.unitx3
+            %h6
               !=link_to h(user.name), user
-            %td
-              Helpfulness:
-              != user.rating_points
-  
+              (#{user.rating_points || "0"} Kudos points)
+            %p= truncate(user.description, :length => 140)
