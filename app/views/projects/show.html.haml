@@ -2,9 +2,9 @@
   = @project.title
   - if logged_in? && current_user == @project.user
     != link_to '(edit)', edit_project_path(@project)
-%section.width4.first
-  .column.width1.first.stroke_heavy
-    %h5 Project info
+%section.width4.first.project
+  .column.width1.first.meta.stroke_heavy
+    %img(src="/images/empty.png" class="width1")
     %p.stroke_light
       %strong
         Author:
@@ -17,26 +17,31 @@
       %strong
         Visits:
       #{@project.visits.size.to_i}
-    %p.tags.stroke_light
-      - @project.tag_list.each do |tag|
-        = tag
-  .column.width2
+  .column.width2.stroke_heavy
     != simple_format sanitize(@project.description)
-  .column.width1.stroke_heavy
-    %h5 Kudos
-    %p(id="project_#{@project.id}_kudos")
-      != kudos_sparkline_tag(@project.kudos_history, "ffffff")
+  .column.width1.stroke_heavy.kudos_box
+    %dl(id="project_#{@project.id}_kudos")
+      %dt Kudos:
+      %dd
+        #{@project.project_ratings.sum(:rating)}
+        != kudos_sparkline_tag(@project.kudos_history, "667788", "ffffff", "90x18")
     - if logged_in?
-      .stroke_light
+      %div.kudos_actions
         Give Kudos:
-        != button_to "+", project_project_ratings_path(@project, :rating => 1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => 1, :format => 'json')
-        != button_to "-", project_project_ratings_path(@project, :rating => -1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => -1, :format => 'json')
+        != button_to "☺", project_project_ratings_path(@project, :rating => 1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => 1, :format => 'json')
+        != button_to "☹", project_project_ratings_path(@project, :rating => -1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => -1, :format => 'json')
+    .tags.stroke_heavy
+      %h5 Tags
+      %p
+        - @project.tag_list.each do |tag|
+          = tag
 
-  %h2.width4.first 
-    Feedback
-  .width4.first
-    Tagged with: 
-    %ul.tags
+%section.width4.first.stroke_heavy.first.feedback
+  .column.width4.first
+    %h2.column.width1.first Feedback
+    %p.column.width3.tags
+      %strong
+        Tagged with:
       - @project.feedback_tags.each do |tag|
         != link_to_unless_current tag, project_path(@project, :tag => tag)
   - if logged_in?
@@ -45,9 +50,9 @@
     - else
       != render :partial => 'feedbacks/form', :locals => { :project => @project }
   - else
-    .notice
+    .column.width4.first.notice
       You are not logged in, so you can't give feedback on this project. Go ahead,
       != link_to "you can do it, too!", new_session_path
       
-  %ul.column.width4.first.feedback
+  %ul.column.width4
     != render :partial => 'feedbacks/feedback', :collection => @project.feedbacks.root

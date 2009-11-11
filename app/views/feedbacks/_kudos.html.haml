@@ -1,13 +1,13 @@
 .kudos.column.width2.first
-  %p.column.unitx1.first
-    %strong Kudos:
-    %span(id="feedback_#{feedback.id}_kudos")
-      != kudos_sparkline_tag(feedback.kudos_history, "dd6644")
-    
-  .column.unitx2
+
+  .column.unitx2.first
     This is
     != button_to "helpful", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1 ), :class => 'kudos-button', "data-url" => project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1, :format => 'json' )
     != button_to "not helpful", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1), :class => 'kudos-button', "data-url" => project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1, :format => 'json' )
-  
+
+  %p.column.unitx1.feedback_sparkline
+    %span(id="feedback_#{feedback.id}_kudos")
+      != kudos_sparkline_tag(feedback.kudos_history, "dd6644")
+
   %p.column.unitx1.actions
     != link_to_function "reply", "$('#reply_on_feedback_#{feedback.id}').toggle('fast')"

@@ -36,9 +36,9 @@ label.width4 input, label.width4 textarea, .width4>textarea { width: 962px; }
 h4 { margin-bottom: 18px; }
 
 table {
-  border-top: 2px solid rgb(0, 0, 0);
+  border-top: 3px solid rgb(0, 0, 0);
   border-bottom: 1px solid rgb(0, 0, 0);
-  margin-top: 15px;
+  margin-top: 14px;
   margin-bottom: 19px;
   padding-bottom: 0;
 }
@@ -53,6 +53,10 @@ th:first-child, td:first-child {
 
 th:last-child, td:last-child {
   padding-right: 6px;
+}
+
+th {
+  border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 td {

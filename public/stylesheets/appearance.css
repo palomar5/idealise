@@ -8,20 +8,27 @@
 }
 
 .stroke_heavy {
-  margin-top: 12px;
+  margin-top: 11px;
   padding-top: 4px;
-  border-top: 2px solid #000;
+  border-top: 3px solid #678;
+}
+
+.stroke_heavy>div:first-child {
+  margin-top: -5px;
 }
 
 .stroke_light {
-  margin-top: 12px;
-  padding-top: 5px;
-  border-top: 1px solid #ccc;
+  top: 0;
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top: 1px solid #abc;
 }
 
 p.stroke_light, .meta p, p.tags {
   text-indent: 0;
 }
+
+/* TODO: extract typography and make HelveticaNeue-Light failsafe */
 
 p.intro, .intro p {
   font-family: HelveticaNeue-Light, Helvetica, Arial;
@@ -30,16 +37,20 @@ p.intro, .intro p {
   padding-bottom: 0;
   padding-top: 9px;
   text-indent: 0;
+  word-spacing: 0.05em;
 }
 
 div.intro, h1+p.intro {
   margin-top: 10px;
 }
 
+h1, h2, h3, h4, h5, h6, strong, dt, .meta, .tags {
+  color: #678;
+}
+
 h1 {
   font-family: HelveticaNeue-Light, Helvetica, Arial;
   font-weight: bold;
-  color: #abc;
 }
 
 /* header */
@@ -89,6 +100,7 @@ h1 {
 }
 
 .actions input, .button-to input {
+  font-family: HelveticaNeue, Helvetica, Arial;
   background: #678;
   background: -webkit-gradient(linear, left top, left bottom, from(#789), to(#456));
   margin-top: -1px;
@@ -99,28 +111,88 @@ h1 {
   text-shadow: 0 -1px 2px rgba(1, 1, 1, 0.35);
   color: #fff;
   border: none;
+  border-bottom: 1px solid rgb(51, 68, 85);
 }
 
 .actions input:hover, .button-to input:hover {
   background: #678;
   background: -webkit-gradient(linear, left top, left bottom, from(#567), to(#234));
+  border-bottom: 1px solid rgb(17, 34, 51);
 }
 
 /* home */
 
 .claim {
-  font-size: 84px;
-  letter-spacing: -0.05em;
-  line-height: 72px;
-  text-align: right;
+  font-size: 60px;
+  letter-spacing: -0.04em;
+  line-height: 60px;
   top: 4px;
   color: #d64;
 }
 
+.home p.intro, .home .intro p {
+  font-size: 24px;
+  line-height: 30px;
+  padding-bottom: 0;
+  padding-top: 9px;
+  text-indent: 0;
+}
+
+.video {
+  height: 266px;
+  background: #678;
+}
+
 /* projects */
+
+.project .meta img {
+  margin-top: -4px;
+  margin-bottom: -14px;
+  height: 234px;
+}
 
 ul.tags { list-style-type: none; margin:18px 0; padding:0; height:18px; }
 ul.tags li { display:block; border:1px solid #432; float:left; background:#fe0 ;margin:2px; padding:2px 4px;}
+
+.kudos_box dl, .kudos_box .kudos_actions {
+  font-size: 18px;
+  font-weight: bold;
+  color: #678;
+}
+
+.kudos_box .kudos_actions input {
+  font-size: 36px;
+  line-height: 36px;
+  height: 36px;
+  padding-top: 0;
+  vertical-align: bottom;
+}
+
+.kudos_box dl {
+  position: relative;
+  margin-top: -3px;
+  height: 26px;
+  border-bottom: 1px solid #678;
+}
+
+.kudos_box dd {
+  position: absolute;
+  top: -6px;
+  right: 0;
+  padding: 4px 12px;
+  height: 24px;
+  background: #678;
+  color: #fff;
+  text-align: right;
+}
+
+.kudos_actions {
+  padding-bottom: 13px;
+}
+
+.feedback {
+  margin-top: -2px;
+}
 
 .feedback_form>div.width2, .feedback li>div.width2 {
   margin-left: 6px;
@@ -135,7 +207,8 @@ ul.tags li { display:block; border:1px solid #432; float:left; background:#fe0 ;
 
 .feedback_form label.width2, .feedback_form label.width2,
 .feedback_form label.width2 input, .feedback_form label.width2 textarea, .feedback_form .width2>textarea,
-.feedback_form .width2.actions, .feedback .width2.actions {
+.feedback_form .width2.actions, .feedback .width2.actions,
+.feedback .tag_form input[type=text] {
   width: 444px;
 }
 
@@ -144,13 +217,14 @@ img.avatar {
   padding-bottom: 3px;
 }
 
-ul.feedback {
-  list-style-type: none;
-  top: 0;
+.feedback .first>.tags {
+  top: 23px;
 }
 
-.feedback li {
-  margin: 18px 0;
+.feedback ul {
+  list-style-type: none;
+  top: 0;
+  margin-bottom: 0;
 }
 
 .feedback .original>div.width2 {
@@ -158,12 +232,20 @@ ul.feedback {
   background: #E0E3E6 url(/images/nose_feedback_left.png) no-repeat;
 }
 
-.feedback .answer>div.width2 {
+.feedback .answer>div.width2, .feedback .answer_form>div.width2 {
   margin-right: -12px;
   margin-left: 18px;
   padding: 3px 30px 0 12px;
   width: 444px;
+}
+
+.feedback .answer>div.width2 {
   background: #E0E3E6 url(/images/nose_feedback_right.png) top right no-repeat;
+}
+
+.feedback .answer_form>div.width2 {
+  padding-bottom: 15px;
+  background: #d64 url(/images/nose_right.png) top right no-repeat;
 }
 
 .feedback li p:first-child, .feedback li p.actions, .feedback li .kudos .unitx2 {
@@ -183,6 +265,16 @@ ul.feedback {
   color: #fff;
 }
 
+.feedback li .kudos .unitx2 {
+  padding-left: 12px;
+  width: 216px;
+}
+
+.feedback li .kudos a {
+  padding-right: 12px;
+  color: #fff;
+}
+
 .feedback .original .kudos {
   margin-right: -6px;
 }
@@ -195,6 +287,10 @@ ul.feedback {
   margin-left: 0;
 }
 
+.feedback li .kudos .feedback_sparkline img {
+  padding-top: 4px;
+}
+
 /* kudos colors */
 .good { color: #0f0;}
 .bad { color: #f00;}
@@ -203,17 +299,18 @@ ul.feedback {
 
 /* footer */
 
-#page {
+html, body, #page {
+  margin-bottom: 0;
   padding-bottom: 0;
 }
 
 #page>footer {
-  padding-bottom: 18px;
-  background: #000;
+  margin-top: 26px;
+  margin-bottom: 0;
+  border-color: #000;
 }
 
 #page>footer p {
   margin-bottom: 0;
-  padding-left: 12px;
-  color: #fff;
+  color: #678;
 }

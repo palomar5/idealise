@@ -1,4 +1,4 @@
-- form_for(feedback, :url => project_feedback_path(feedback.project, feedback), :html => {:class => "width2 first" , :style => 'display:none', :id => "tags_for_feedback_#{feedback.id}"}) do |f|
+- form_for(feedback, :url => project_feedback_path(feedback.project, feedback), :html => {:class => "width2 first tag_form" , :style => 'display:none', :id => "tags_for_feedback_#{feedback.id}"}) do |f|
   %label.width2.first
     Add some Tags:
     != f.text_field(:tags_to_add)

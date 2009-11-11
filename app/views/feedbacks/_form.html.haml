@@ -1,4 +1,4 @@
-- form_for(:feedback, :url => project_feedbacks_path(project), :html => { :class => 'width4 first feedback_form' }) do |f|
+- form_for(:feedback, :url => project_feedbacks_path(project), :html => { :class => 'column width4 first feedback_form' }) do |f|
   != f.error_messages
   .column.width1.first
     != image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar")

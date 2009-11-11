@@ -13,7 +13,7 @@ class ProjectRatingsController < ResourceController::Base
     end
     respond_to do |format|
       format.html { redirect_to smart_url(parent_url_options) }
-      format.json { render :json => { :toReplace => { "project_#{parent_object.id}_kudos" => kudos_sparkline_tag(parent_object.reload.kudos_history, "ffffff") } }.to_json }
+      format.json { render :json => { :toReplace => { "project_#{parent_object.id}_kudos" => "<dt>Kudos:</dt><dd>#{parent_object.reload.project_ratings.sum(:rating)} " + kudos_sparkline_tag(parent_object.reload.kudos_history, "667788", "ffffff", "90x18") + "</dd>" } }.to_json }
     end
   end
 end
