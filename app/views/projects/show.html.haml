@@ -8,7 +8,7 @@
     %p.stroke_light
       %strong
         Author:
-      = @project.user.try(:name) || "no name"
+      != link_to(h(@project.user.try(:name)), user_path(@project.user)) || "no name"
     %p.stroke_light
       %strong
         Creation date:
