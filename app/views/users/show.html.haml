@@ -8,6 +8,29 @@
     - @user.tag_list.each do |tag|
       %li= tag
 %section.width4.first
+  %p
+    expert rating: #{ @user.rating_points }
+  %p
+    description:
+    != sanitize(@user.description)
+
+- unless @user.projects.empty?
+  %h2.width4.first Own Projects
+  %ul.width4.first
+    - @user.projects.each do |project|
+      %li
+        !=link_to project.title, project
+        (#{truncate(project.description, :length => 140)})
+
+- unless @user.projects_with_feedback.empty?
+  %h2.width4.first Projects given feedback on
+  %ul.width4.first
+    - @user.projects_with_feedback.each do |project|
+      %li
+        !=link_to project.title, project
+        (#{truncate(project.description, :length => 140)})
+
+%section.width4.first
     
   %p Ideas on what could be here: The users' projects, the latest feedbacks the user has given, ranking/kudos information
   - if logged_in?
