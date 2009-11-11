@@ -16,7 +16,7 @@
   .column.width1
     - unless feedback.parent
       != render :partial => 'feedbacks/kudos', :locals => { :feedback => feedback }
-      != link_to_function "reply", "$('#reply_on_project_#{feedback.project.id}').toggle('fast')"
+      != link_to_function "reply", "$('#reply_on_feedback_#{feedback.id}').toggle('fast')"
     - else
       .column.unitx1.first.meta
         - if feedback.user
@@ -24,16 +24,18 @@
         %p #{feedback.created_at.to_s :short }
       != image_tag(gravatar_url(current_user), :class => "column unitx1")
   - unless feedback.parent
-    %div(id="reply_on_project_#{feedback.project.id}" class="column width4" style="display:none;")
-      .column.width1.first
-        &nbsp;
-      - form_for(:feedback, :url => project_feedbacks_path(feedback.project), :html => { :class => 'column width2'}) do |f|
+    %div(id="reply_on_feedback_#{feedback.id}" class="width4 first" style="display:none;")
+      - form_for(:feedback, :url => project_feedbacks_path(feedback.project), :html => { :class => 'column width3 first'}) do |f|
+        .column.width1.first
+          %label.width1.first
+            Tags
+            != f.text_field :tag_list
+          .width1.first.actions
+            != f.submit 'Submit'
         != hidden_field_tag :parent_id, feedback.id
         != f.error_messages
-        .width2.multilinex6.first
+        .width2.multilinex6.column
           != f.text_area :text
-          %p.actions
-            != f.submit 'Submit'
       .column.width1
         .column.unitx1.first
           Reply here
