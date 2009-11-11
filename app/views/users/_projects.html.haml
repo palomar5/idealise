@@ -1,0 +1,10 @@
+%ul.column.width2.first
+  - projects.each do |project|
+    %li.column.width2.first
+      .column.unitx1.first
+        %img(src="/images/empty.png")
+      .column.unitx3
+        %h6
+          != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x18") unless project.kudos_history.empty?
+          !=link_to h(project.title), project
+        %p= truncate(project.description, :length => 140)

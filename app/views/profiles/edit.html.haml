@@ -1,25 +1,23 @@
-%section.width4.first
-  %h1.column.width4.first
-    Edit your profile (#{@user.username})
+%h1.column.width4.first Edit your profile (#{@user.username})
+%section.column.width3.first
+  %p.box Write something aobut you below so that other people get a clear picture of who you are and with what projets you could help.
   - form_for @user, :url => profile_path, :html => {:method => :put, :class => 'width4 column first'} do |f|
-    .width4.first
-      != f.error_messages
+    != f.error_messages
     .width2.first.column
       %label.width2.first
         Name:
-        != f.text_field :name
+        != f.text_field :name, :title => 'Change this into your real name.', :class => 'show_advice'
       %label.width2.first
         Email:
-        != f.text_field :email
+        != f.text_field :email, :title => 'Please make sure you spelt it right!', :class => 'show_advice'
       %label.width2.first
         Tag yourself:
-        != f.text_field :tag_list
-    .width2.column
+        != f.text_field :tag_list, :title => 'A few tags to describe your interests and competences to help you find matching projects. Comma-separated.', :class => 'show_advice'
       %label.width2.first.multilinex4
         Describe yourself in a few sentences:
-        != f.text_area :description
-    %p.width4.actions.first
-      != f.submit "Save your Profile"
-      or
-      != link_to "cancel", @user
+        != f.text_area :description, :title => 'Try to be vivid here!', :class => 'show_advice'
+      %p.width2.actions.first
+        != f.submit "Save your Profile"
+        or
+        != link_to "cancel", @user
     

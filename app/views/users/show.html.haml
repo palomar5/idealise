@@ -2,38 +2,40 @@
   = @user.name
   (#{@user.username})
   - if logged_in? && @user == current_user
-    != link_to "(edit your profile)", edit_profile_path()
-%section.width4.first
-  %ul.tags
-    - @user.tag_list.each do |tag|
-      %li= tag
-%section.width4.first
-  %p
-    expert rating: #{ @user.rating_points }
-  %p
-    description:
-    != sanitize(@user.description)
-
-- unless @user.projects.empty?
-  %h2.width4.first Own Projects
-  %ul.width4.first
-    - @user.projects.each do |project|
-      %li
-        !=link_to project.title, project
-        (#{truncate(project.description, :length => 140)})
-
-- unless @user.projects_with_feedback.empty?
-  %h2.width4.first Projects given feedback on
-  %ul.width4.first
-    - @user.projects_with_feedback.each do |project|
-      %li
-        !=link_to project.title, project
-        (#{truncate(project.description, :length => 140)})
-
-%section.width4.first
+    != link_to "(edit)", edit_profile_path()
     
-  %p Ideas on what could be here: The users' projects, the latest feedbacks the user has given, ranking/kudos information
-  - if logged_in?
+%section.width4.first.user
+  .column.unitx1.first.meta.stroke_heavy
+    != image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar")
+  .column.unitx5.stroke_heavy
+    != simple_format sanitize(@user.description)
+  .column.width1.stroke_heavy.kudos_box  
+    %p
+      %strong
+        Kudos points:
+      = @user.rating_points
+    %p.stroke_light
+      %strong
+        Tags:
+      - @user.tag_list.each do |tag|
+        = tag
+  
+.column.width4.first.stroke_heavy
+  %section.column.width2.first.projects
+    %h2.column.width2.first Own Projects
+    - unless @user.projects.empty?
+      != render :partial => 'projects', :locals => { :projects => @user.projects }
+    - else
+      %p No projects yet.
+  
+  %section.column.width2.projects
+    %h2.column.width2.first Projects given feedback on
+    - unless @user.projects_with_feedback.empty?
+      != render :partial => 'projects', :locals => { :projects => @user.projects_with_feedback }
+
+- if logged_in?
+  %section.width4.first.stroke_heavy.get_feedback
+    %h2.column.width1.first Feedback
+    %h5.column.width3 Request this users feedback on one of your projects
     %section.width3.first
-      %h5 Request this users feedback on one of your projects
       != render :partial => 'feedback_requests/form'

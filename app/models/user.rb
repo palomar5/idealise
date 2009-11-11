@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   named_scope :most_respected, :order => "rating_points DESC"
   has_many :projects
   has_many :feedbacks
-  has_many :projects_with_feedback, :through => :feedbacks, :source => :project
+  has_many :projects_with_feedback, :through => :feedbacks, :source => :project, :uniq => true
   
 end

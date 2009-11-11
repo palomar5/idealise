@@ -44,6 +44,10 @@ div.intro, h1+p.intro {
   margin-top: 10px;
 }
 
+.home, .projects {
+  padding-bottom: 0;
+}
+
 h1, h2, h3, h4, h5, h6, strong, dt, .meta, .tags {
   color: #678;
 }
@@ -245,7 +249,7 @@ img.avatar {
   padding-bottom: 3px;
 }
 
-.feedback .first>.tags {
+.feedback .first>.tags, .get_feedback h5 {
   top: 23px;
 }
 
@@ -324,6 +328,13 @@ img.avatar {
 .bad { color: #f00;}
 .super { color: #080;}
 .crap { color: #800;}
+
+/* user */
+
+.user .meta img {
+  margin-top: -4px;
+  margin-bottom: 4px;
+}
 
 /* footer */
 
