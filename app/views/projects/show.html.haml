@@ -14,7 +14,9 @@
         Creation date:
       = @project.created_at.to_date.to_formatted_s(:long)   
     %p.stroke_light
-      #{@project.visits.size.to_i} Visits so far
+      %strong
+        Visits:
+      #{@project.visits.size.to_i}
     %p.tags.stroke_light
       - @project.tag_list.each do |tag|
         = tag
@@ -32,16 +34,19 @@
         != button_to "+", project_project_ratings_path(@project, :rating => 1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => 1, :format => 'json')
         != button_to "-", project_project_ratings_path(@project, :rating => -1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => -1, :format => 'json')
 - if logged_in?
-  %section.width4.first.stroke_heavy
-    - if current_user == @project.user
+  - if current_user == @project.user
+    %section.width4.first.stroke_heavy
       %h2 Request Feedback
       != render :partial => 'feedback_requests/form'
+    %section.width4.first.stroke_heavy
       %h2 Feedback
-    - else 
+  - else
+    %section.width4.first.stroke_heavy
       %h2 Feedback
       != render :partial => 'feedbacks/form', :locals => { :project => @project }
 - else
   %section.width4.first.stroke_heavy
+    %h2 Feedback
     .notice
       You are not logged in, so you can't give feedback on this project. Go ahead,
       != link_to "you can do it, too!", new_session_path 

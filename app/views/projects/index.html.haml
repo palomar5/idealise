@@ -10,7 +10,7 @@
           %td
             !=link_to h(project.title), project
           %td
-            != kudos_sparkline_tag(project.kudos_history, cycle("f6f6f6", "ffffff")) unless project.kudos_history.empty?
+            != kudos_sparkline_tag(project.kudos_history, cycle("f6f9ff", "ffffff")) unless project.kudos_history.empty?
           %td
             = truncate(project.short_description, :length => 140)
           %td

@@ -16,6 +16,14 @@
 .unitx6 { width: 720px; } /* 60.00em, Same as width3 */
 .unitx7 { width: 843px; } /* 70.25em */
 
+a {
+  color: #069;
+}
+
+a:visited {
+  color: #034;
+}
+
 form { overflow: visible;}
 
 label.width1 input, label.width1 textarea, .width1>textarea { width: 224px; }
@@ -26,7 +34,6 @@ label.width4 input, label.width4 textarea, .width4>textarea { width: 962px; }
 .multilinex6 textarea { height: 108px }
 
 h4 { margin-bottom: 18px; }
-
 
 table {
   border-top: 2px solid rgb(0, 0, 0);

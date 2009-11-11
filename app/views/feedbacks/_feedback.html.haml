@@ -6,17 +6,21 @@
         - if feedback.user
           %p!= link_to feedback.user.try(:name) || "no name", feedback.user
         %p #{feedback.created_at.to_s :short }
-        %ul.tags
-          - feedback.tag_list.each do |tag|
-            %li= tag
     - else
       != render :partial => 'feedbacks/kudos', :locals => { :feedback => feedback }
   .column.width2
     != simple_format(h(feedback.text))
+    %p.width2.first.tags
+      %strong
+        Tagged width:
+      - feedback.tag_list.each do |tag|
+        = tag
+      != link_to '(add tag)'
+    %p.width2.first.actions
+      != link_to_function "reply", "$('#reply_on_feedback_#{feedback.id}').toggle('fast')"
   .column.width1
     - unless feedback.parent
       != render :partial => 'feedbacks/kudos', :locals => { :feedback => feedback }
-      != link_to_function "reply", "$('#reply_on_feedback_#{feedback.id}').toggle('fast')"
     - else
       .column.unitx1.first.meta
         - if feedback.user
@@ -27,15 +31,16 @@
     %div(id="reply_on_feedback_#{feedback.id}" class="width4 first" style="display:none;")
       - form_for(:feedback, :url => project_feedbacks_path(feedback.project), :html => { :class => 'column width3 first'}) do |f|
         .column.width1.first
-          %label.width1.first
-            Tags
-            != f.text_field :tag_list
-          .width1.first.actions
-            != f.submit 'Submit'
+          &nbsp;
         != hidden_field_tag :parent_id, feedback.id
         != f.error_messages
         .width2.multilinex6.column
           != f.text_area :text
+          %label.width2.first
+            Tags
+            != f.text_field :tag_list
+          %p.width2.first.actions
+            != f.submit 'Submit'
       .column.width1
         .column.unitx1.first
           Reply here
