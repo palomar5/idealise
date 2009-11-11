@@ -17,4 +17,12 @@ class Feedback < ActiveRecord::Base
     feedback_ratings.all(:limit => 20).map{|kudos| running = running + kudos.rating }
   end
   
+  def tags_to_add
+    ""
+  end
+  
+  def tags_to_add=(tags)
+    self.tag_list= self.tag_list.join(",") + "," + tags
+  end
+  
 end
