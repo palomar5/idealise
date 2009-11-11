@@ -1,6 +1,7 @@
 class Feedback < ActiveRecord::Base
   
   acts_as_tree
+  acts_as_taggable_on :tags
   
   belongs_to :project
   belongs_to :user

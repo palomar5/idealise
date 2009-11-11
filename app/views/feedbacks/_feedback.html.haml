@@ -6,6 +6,9 @@
         - if feedback.user
           %p!= link_to feedback.user.try(:name) || "no name", feedback.user
         %p #{feedback.created_at.to_s :short }
+        %ul.tags
+          - feedback.tag_list.each do |tag|
+            %li= tag
     - else
       != render :partial => 'feedbacks/kudos', :locals => { :feedback => feedback }
   .column.width2

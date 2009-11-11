@@ -17,5 +17,12 @@ class FeedbackTest < ActiveSupport::TestCase
     end
   end
   
+  context "acts as taggable on tags" do
+    should "have taggable methods" do
+      @feedback = Feedback.new
+      assert @feedback.respond_to?(:tag_list=)
+      assert @feedback.respond_to?(:tag_list)
+    end
+  end
   
 end
