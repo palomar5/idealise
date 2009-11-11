@@ -1,5 +1,6 @@
-%strong Kudos:
-%span(id="feedback_#{feedback.id}_kudos")
-  != kudos_sparkline_tag(feedback.kudos_history, "ffffff")
+%p
+  %strong Kudos:
+  %span(id="feedback_#{feedback.id}_kudos")
+    != kudos_sparkline_tag(feedback.kudos_history, "ffffff")
 != button_to "+", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1 ), :class => 'kudos-button', "data-url" => project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1, :format => 'json' )
 != button_to "-", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1), :class => 'kudos-button', "data-url" => project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1, :format => 'json' )
