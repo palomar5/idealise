@@ -31,4 +31,20 @@ class UserMailerTest < ActionMailer::TestCase
       assert_match /projects\/#{projects(:simple_project).id}/, @mail.body
     end    
   end
+  
+  context "project notification" do
+    setup do
+      @mail = UserMailer.create_project_notification(users(:second), projects(:simple_project))
+    end
+
+    should "set correct to address" do
+      assert_equal users(:second).email, @mail.to[0]
+    end
+    
+    should "contain link to project" do
+      assert_match /projects\/#{projects(:simple_project).id}/, @mail.body
+    end
+    
+  end
+  
 end

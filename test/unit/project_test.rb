@@ -28,6 +28,34 @@ class ProjectTest < ActiveSupport::TestCase
       end
     end
   end
+
+  context "notification of experts" do
+    should "deliver notification" do
+      users(:second).update_attribute( :tag_list, "crazytag" )
+      assert_difference "ActionMailer::Base.deliveries.count" do
+        project = Project.new(:user => users(:simple_user), :description => "we can haz", :title => "wooo", :tag_list => "crazytag")
+        project.save
+      end
+    end
+    
+    should "not deliver notification if no tags given" do
+      assert_no_difference "ActionMailer::Base.deliveries.count" do
+        project = Project.new(:user => users(:simple_user), :description => "we can haz", :title => "wooo")
+        project.save
+      end
+    end
+    
+    should "deliver notification if user gave feedback on projects of this user before" do
+      assert_difference "ActionMailer::Base.deliveries.count" do
+        puts projects(:simple_project).feedbacks.create(:user => users(:second), :text => "foo").inspect
+        project = Project.new(:user => users(:simple_user), :description => "we can haz", :title => "wooo")
+        project.save
+        puts users(:simple_user).reload.connected_users.inspect
+        
+      end
+    end
+    
+  end
   
   
   

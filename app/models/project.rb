@@ -15,6 +15,8 @@ class Project < ActiveRecord::Base
   
   validates_presence_of :description, :title
 
+  after_create :send_notifications
+
   def kudos_history
     running = 0
     project_ratings.all(:limit => 20).map{|kudos| running = running + kudos.rating }
@@ -36,6 +38,19 @@ class Project < ActiveRecord::Base
   
   def feedback_tags
     self.feedbacks.root.map(&:tag_list).flatten.uniq
+  end
+
+private
+  
+  def send_notifications
+    unless self.tag_list.empty?
+      users_to_notify = User.find_tagged_with(self.tag_list) + self.user.connected_users
+      users_to_notify.reject! {|u| u == self.user }
+      users_to_notify.uniq.each do |receiver|
+        UserMailer.deliver_project_notification(receiver, self) unless receiver.email.blank?
+      end
+      true
+    end
   end
   
 end
