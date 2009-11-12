@@ -83,9 +83,23 @@ h1 {
 /* forms */
 
 .notice {
-  border: 1px solid #432;
-  background: #fe0;
-  padding: 2px 4px;
+  border: 1px solid #ed8;
+  background: #fe9;
+  padding: 8px 12px;
+  color: #543;
+}
+
+.errorExplanation {
+  border: 1px solid #900;
+  background: #c00;
+  padding: 8px 12px;
+  color: #fff;
+}
+
+.errorExplanation h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
 }
 
 .button-to, .button-to div {
@@ -170,7 +184,7 @@ h1 {
   padding-bottom: 13px;
 }
 
-.projects .unitx1 img, .users .unitx1 img {
+.projects .unitx1 img {
   width: 105px;
   height: 72px;
 }

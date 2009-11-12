@@ -16,7 +16,7 @@
         Choose one of your projects:
         != select_tag :project_id, options_from_collection_for_select(@user.projects, 'id', 'title')
     %label.width2.multilinex3.first
-      Do you want to add a personal message? Staying concise while beeing polite will raise your chances of getting people to give feedback:
+      Do you want to add a personal message? Staying concise while being polite will raise your chances of getting people to give feedback:
       != f.text_area :text
     %p.actions.first
       != f.submit "Send request"
