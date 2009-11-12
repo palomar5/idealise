@@ -10,17 +10,23 @@
         .column.width2
           %h3.column.width2.first
             !=link_to h(project.title), project
+            != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x12")
           %p.column.unitx3.first
             %strong
               = project.user.try(:name)
               (#{project.created_at.to_date.to_formatted_s(:long)})
-          .column.unitx1.sparkline
-            != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x12")
-          %p.column.width2.first= truncate(project.description, :length => 400)
-          %h6.column.width2.first Tags
-          %p.column.width2.first
+          %p.column.width2.first= truncate(project.description, :length => 440)
+          %p.column.width2.first.tags
+            %strong Tags:
             - project.tag_list.each do |tag|
               = tag
+          - if current_user == project.user
+            %p.column.width2.first
+              %strong Actions:
+              != link_to 'edit', edit_project_path(project)
+              |
+              != link_to 'delete', project, :confirm => "Are you sure?", :method => :delete
+            
 
 %section.column.width1.stroke_heavy
   %h5 Actions

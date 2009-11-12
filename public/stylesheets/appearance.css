@@ -80,8 +80,9 @@ h1 {
   margin-right: 12px;
 }
 
-#page>header a {
+#page>header a, #page>header a:visited {
   text-decoration: none;
+  color: #000;
 }
 
 /* forms */
@@ -175,6 +176,8 @@ h1 {
   padding-top: 3px;
 }
 
+/* projects and users */
+
 ul.projects, ul.users {
   list-style: none;
 }
@@ -200,7 +203,7 @@ ul.projects p + p {
   padding-bottom: 11px;
 }
 
-.projects.all {
+.projects.all, .users.all {
   margin-top: 14px;
 }
 
@@ -212,8 +215,8 @@ ul.projects p + p {
   padding-bottom: 4px;
 }
 
-.projects.all h6 {
-  margin-top: 18px;
+.projects p, .users p {
+  margin: 4px 0;
 }
 
 .projects .unitx1.first img {
@@ -225,7 +228,14 @@ ul.projects p + p {
   text-align: right;
 }
 
-/* projects */
+.project>.stroke_heavy, .user>.stroke_heavy {
+  margin-left: 0;
+  padding-left: 18px;
+}
+
+.project>.stroke_heavy.first, .user>.stroke_heavy.first {
+  padding-left: 0;
+}
 
 .project .meta img {
   margin-top: -4px;
