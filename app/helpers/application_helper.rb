@@ -24,7 +24,7 @@ module ApplicationHelper
     max = kudos_data.max
     scale = max
     scale = min if min.abs > scale
-    base_url = "http://chart.apis.google.com/chart?cht=ls&chs=#{size}&chco=#{chart_color}&chf=bg,s,#{background_color}&chls=1,1,0&chm=o,990000,0,20,4,1"
+    base_url = "http://chart.apis.google.com/chart?cht=ls&chs=#{size}&chco=#{chart_color}&chf=bg,s,#{background_color}&chls=1,1,0&chm=o,990000,0,20,3,1"
     "<img src='#{base_url}&chds=#{-scale},#{scale}&chd=t:#{kudos_data.join(',')}'/>"
   end
 

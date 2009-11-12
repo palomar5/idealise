@@ -13,26 +13,9 @@
 .column.width4.first.stroke_heavy.home
   %section.column.width2.first.projects
     %h2.column.width2.first Hot projects
-    %ul.column.width2.first
-      - @hot_projects.each do |project|
-        %li.column.width2.first
-          .column.unitx1.first
-            != image_tag project.image.url(:thumb, :class => 'unitx1')
-          .column.unitx3
-            %h6
-              != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x18") unless project.kudos_history.empty?
-              !=link_to h(project.title), project
-            %p= truncate(project.description, :length => 140)
+    != render :partial => 'shared/projects', :locals => { :projects => @hot_projects }
   
-  %section.column.width2.users
+  %section.column.width2
     %h2.column.width2.first Trusted users
-    %ul.column.width2.first
-      - @respected_users.each do |user|
-        %li.column.width2.first
-          .column.unitx1.first
-            != image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar")
-          .column.unitx3
-            %h6
-              !=link_to h(user.name), user
-              (#{user.rating_points || "0"} Kudos points)
-            %p= truncate(user.description, :length => 140)
+    != render :partial => 'shared/users', :locals => { :users => @respected_users }
+    

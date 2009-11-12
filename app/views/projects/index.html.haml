@@ -1,22 +1,18 @@
 %h1.column.width1.first Projects on idealise
 %p.column.width2.intro All the latest and greatest stuff around here.
 
-%section.column.width3.first
-
-  %table.width3.first
-    %tbody
-      - @projects.each do |project|
-        %tr
-          %td
+%section.column.width3.first.stroke_heavy
+  %ul.column.width3.first.projects
+    - @projects.each do |project|
+      %li.column.width3.first
+        .column.width1.first
+          != image_tag project.image.url(:medium, :class => 'width1')
+        .column.width2
+          %h6.column.unitx3.first
             !=link_to h(project.title), project
-          %td
-            != kudos_sparkline_tag(project.kudos_history, cycle("f6f9fc", "ffffff")) unless project.kudos_history.empty?
-          %td
-            = truncate(project.description, :length => 140)
-          %td
-            - if logged_in? && project.user == current_user
-              != link_to 'Edit', edit_project_path(project)
-              != link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+          .column.unitx1.sparkline
+            != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x12")
+          %p.column.width2.first= truncate(project.description, :length => 280)
 
 %section.column.width1.stroke_heavy
   %h5 Actions

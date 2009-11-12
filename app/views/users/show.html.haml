@@ -21,17 +21,17 @@
         = tag
   
 .column.width4.first.stroke_heavy
-  %section.column.width2.first.projects
+  %section.column.width2.first
     %h2.column.width2.first Own Projects
     - unless @user.projects.empty?
-      != render :partial => 'projects', :locals => { :projects => @user.projects }
+      != render :partial => 'shared/projects', :locals => { :projects => @user.projects }
     - else
       %p No projects yet.
   
-  %section.column.width2.projects
+  %section.column.width2
     %h2.column.width2.first Projects given feedback on
     - unless @user.projects_with_feedback.empty?
-      != render :partial => 'projects', :locals => { :projects => @user.projects_with_feedback }
+      != render :partial => 'shared/projects', :locals => { :projects => @user.projects_with_feedback }
 
 - if logged_in?
   %section.width4.first.stroke_heavy.get_feedback

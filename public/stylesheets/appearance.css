@@ -184,9 +184,17 @@ h1 {
   padding-bottom: 13px;
 }
 
-.projects .unitx1 img {
+.projects .unitx3 div {
+  padding-bottom: 0;
+}
+
+.projects .unitx1.first img {
   width: 105px;
   height: 72px;
+}
+
+.projects .unitx1.sparkline {
+  text-align: right;
 }
 
 /* projects */
