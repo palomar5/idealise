@@ -80,6 +80,10 @@ h1 {
   margin-right: 12px;
 }
 
+#page>header a {
+  text-decoration: none;
+}
+
 /* forms */
 
 .notice {
@@ -162,6 +166,7 @@ h1 {
 }
 
 .home .video {
+  padding-bottom: 0;
   height: 270px;
   background: #678;
 }
@@ -170,27 +175,50 @@ h1 {
   padding-top: 3px;
 }
 
-.projects ul, .users ul {
-  top: 0;
-  margin-top: 0;
+ul.projects, ul.users {
   list-style: none;
 }
 
-.projects ul li, .users ul li {
+.home ul.projects, ul.users {
+  top: 0;
+  margin-top: 0;
+}
+
+ul.projects li, ul.users li {
   top: 0;
 }
 
-.projects .unitx1, .projects .unitx3, .users .unitx1, .users .unitx3 {
+ul.projects p + p {
+  text-indent: 0;
+}
+
+.projects .unitx1, .projects .unitx3 {
   padding-bottom: 13px;
 }
 
-.projects .unitx3 div {
+.users .unitx1, .users .unitx3 {
+  padding-bottom: 11px;
+}
+
+.projects.all {
+  margin-top: 14px;
+}
+
+.projects.all .unitx1, .projects .unitx3, .projects .unitx3 .unitx1 {
   padding-bottom: 0;
+}
+
+.projects.all h3 {
+  padding-bottom: 4px;
+}
+
+.projects.all h6 {
+  margin-top: 18px;
 }
 
 .projects .unitx1.first img {
   width: 105px;
-  height: 72px;
+  height: 108px;
 }
 
 .projects .unitx1.sparkline {
@@ -321,7 +349,7 @@ img.avatar {
 
 .feedback li .kudos .unitx2 {
   padding-left: 12px;
-  width: 216px;
+  width: 176px;
 }
 
 .feedback li .kudos a {
@@ -339,6 +367,10 @@ img.avatar {
 
 .kudos input {
   margin-left: 0;
+}
+
+.feedback li .kudos .feedback_sparkline {
+  padding-right: 40px;
 }
 
 .feedback li .kudos .feedback_sparkline img {

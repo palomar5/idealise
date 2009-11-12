@@ -2,17 +2,25 @@
 %p.column.width2.intro All the latest and greatest stuff around here.
 
 %section.column.width3.first.stroke_heavy
-  %ul.column.width3.first.projects
+  %ul.column.width3.first.projects.all
     - @projects.each do |project|
       %li.column.width3.first
         .column.width1.first
-          != image_tag project.image.url(:medium, :class => 'width1')
+          != link_to image_tag(project.image.url(:medium, :class => 'width1')), project
         .column.width2
-          %h6.column.unitx3.first
+          %h3.column.width2.first
             !=link_to h(project.title), project
+          %p.column.unitx3.first
+            %strong
+              = project.user.try(:name)
+              (#{project.created_at.to_date.to_formatted_s(:long)})
           .column.unitx1.sparkline
             != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x12")
-          %p.column.width2.first= truncate(project.description, :length => 280)
+          %p.column.width2.first= truncate(project.description, :length => 400)
+          %h6.column.width2.first Tags
+          %p.column.width2.first
+            - project.tag_list.each do |tag|
+              = tag
 
 %section.column.width1.stroke_heavy
   %h5 Actions
