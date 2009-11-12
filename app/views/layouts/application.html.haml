@@ -21,7 +21,8 @@
             != link_to 'Users', users_path
         %p.column.width1.login
           - if logged_in?
-            Hi, #{current_user.name}
+            Hi, 
+            != link_to current_user.name, current_user
             != link_to '(log out)', session_path, :method => :delete
           - else
             != link_to 'log in/sign up', new_session_path

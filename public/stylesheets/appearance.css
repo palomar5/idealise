@@ -7,6 +7,10 @@
   color: #fff;
 }
 
+.box a, .box a:visited {
+  color: #fff;
+}
+
 .stroke_heavy {
   margin-top: 11px;
   padding-top: 4px;
@@ -81,8 +85,11 @@ h1 {
 }
 
 #page>header a, #page>header a:visited {
-  text-decoration: none;
   color: #000;
+}
+
+#page>header h1 a, #page>header .menu a {
+  text-decoration: none;
 }
 
 /* forms */

@@ -1,6 +1,9 @@
 %h1.column.width4.first Edit your profile (#{@user.username})
 %section.column.width3.first
-  %p.box Write something aobut you below so that other people get a clear picture of who you are and with what projets you could help.
+  %p.box
+    Write something aobut you below so that other people get a clear picture of who you are and with what projets you could help.
+    If you already have a gravatar, you’ll see it as your profile picture around here. If you don’t have a gravatar yet:
+    != link_to 'Get one! It’s easy.', 'http://en.gravatar.com/site/signup'
   - form_for @user, :url => profile_path, :html => {:method => :put, :class => 'width4 column first'} do |f|
     != f.error_messages
     .width2.first.column
