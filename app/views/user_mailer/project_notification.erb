@@ -1,0 +1,20 @@
+Hi <%= @receiver.name %>,
+
+we would like to show you a brand new project on idealise that seems 
+to fit you as an expert to give feedback on it.
+
+Here are the project details:
+
+Creator: <%= @project.user.name %>
+
+<%= @project.title %>
+
+<%= @project.description %>
+
+If you would like to give feedback on this, you can go to <%= project_url(@project) %>
+
+If you don't want to be bothered, feel free to ignore this email.
+
+-- 
+the IDEALISE team.
+
