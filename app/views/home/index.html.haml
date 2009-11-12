@@ -17,7 +17,7 @@
       - @hot_projects.each do |project|
         %li.column.width2.first
           .column.unitx1.first
-            %img(src="/images/empty.png")
+            != image_tag project.image.url(:thumb, :class => 'unitx1')
           .column.unitx3
             %h6
               != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x18") unless project.kudos_history.empty?
@@ -30,7 +30,7 @@
       - @respected_users.each do |user|
         %li.column.width2.first
           .column.unitx1.first
-            %img(src="/images/empty.png")
+            != image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar")
           .column.unitx3
             %h6
               !=link_to h(user.name), user

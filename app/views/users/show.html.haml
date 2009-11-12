@@ -9,7 +9,7 @@
     != image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar")
   .column.unitx5.stroke_heavy
     != simple_format sanitize(@user.description)
-  .column.width1.stroke_heavy.kudos_box  
+  .column.width1.stroke_heavy.meta  
     %p
       %strong
         Kudos points:

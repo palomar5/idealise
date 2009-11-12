@@ -17,9 +17,15 @@ module ApplicationHelper
   
   
   def kudos_sparkline_tag(kudos_data, background_color, chart_color = '000000', size = '90x18')
-    label_color = "990000"
-    base_url = "http://chart.apis.google.com/chart?cht=lc&chs=#{size}&chco=#{chart_color}&chf=bg,s,#{background_color}&chls=1,1,0&chm=o,#{label_color},0,20,4&chxp=0,#{kudos_data.last}&chxt=r,x,y&chxs=0,990000,11,0,_|1,990000,1,0,_|2,990000,1,0,_"
-    "<img src='#{base_url}&chd=t:#{kudos_data.join(',')}'/>"
+    if kudos_data.size < 20
+      kudos_data = ([0] * (20 - kudos_data.size)) + kudos_data
+    end
+    min = kudos_data.min
+    max = kudos_data.max
+    scale = max
+    scale = min if min.abs > scale
+    base_url = "http://chart.apis.google.com/chart?cht=ls&chs=#{size}&chco=#{chart_color}&chf=bg,s,#{background_color}&chls=1,1,0&chm=o,990000,0,20,4,1"
+    "<img src='#{base_url}&chds=#{-scale},#{scale}&chd=t:#{kudos_data.join(',')}'/>"
   end
 
   def gravatar_url(user = nil)
