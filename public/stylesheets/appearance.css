@@ -409,11 +409,6 @@ img.avatar {
 
 /* footer */
 
-html, body, #page {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
 #page>footer {
   margin-top: 26px;
   margin-bottom: 0;

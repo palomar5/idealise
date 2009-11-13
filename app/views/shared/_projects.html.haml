@@ -8,7 +8,7 @@
           !=link_to h(project.title), project
           != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x12")
         %p.column.unitx3.first= truncate(project.description, :length => 170)  
-        %p.column.width2.first.tags
+        %p.column.unitx3.first.tags
           %strong Tags:
           - project.tag_list.each do |tag|
             = tag

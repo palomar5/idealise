@@ -17,10 +17,13 @@
             != link_to 'Projects', projects_path
           %li
             != link_to 'Users', users_path
+          - if logged_in?
+            %li
+              != link_to 'My Profile', current_user
         %p.column.width1.login
           - if logged_in?
             Hi, 
-            != link_to current_user.name, current_user
+            = current_user.name
             != link_to '(log out)', session_path, :method => :delete
           - else
             != link_to 'log in/sign up', new_session_path
