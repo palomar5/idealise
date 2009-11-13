@@ -1,5 +1,9 @@
 %h1.column.width1.first Projects on idealise
-%p.column.width2.intro All the latest and greatest stuff around here.
+%p.column.width2.intro
+  - unless params[:tag].blank?
+    Everything tagged with ‘#{h params[:tag]}’.
+  - else
+    All the latest and greatest stuff around here.
 
 %section.column.width3.first.stroke_heavy
   %ul.column.width3.first.projects.all
