@@ -7,7 +7,7 @@
 
   %p.column.unitx1.feedback_sparkline
     %span(id="feedback_#{feedback.id}_kudos")
-      != kudos_sparkline_tag(feedback.kudos_history, "dd6644")
+      != kudos_sparkline_tag(feedback.kudos_history, "dd6644", "ffffff")
 
   %p.column.unitx1.actions
     != link_to_function "reply", "$('#reply_on_feedback_#{feedback.id}').toggle('fast')"

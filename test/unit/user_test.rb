@@ -10,6 +10,11 @@ class UserTest < ActiveSupport::TestCase
     assert @user.respond_to?(:tag_list)
     assert @user.respond_to?(:tag_list=)
   end
+  
+  test "fail" do
+    assert false
+  end
+  
     
 end
  

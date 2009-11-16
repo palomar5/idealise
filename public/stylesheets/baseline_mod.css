@@ -17,11 +17,11 @@
 .unitx7 { width: 843px; } /* 70.25em */
 
 a {
-  color: #069;
+  color: #034;
 }
 
 a:visited {
-  color: #034;
+  color: #123;
 }
 
 form { overflow: visible;}

@@ -14,15 +14,17 @@
           != link_to 'idealise', root_path
         %ul.column.width2.menu
           %li
-            != link_to 'Dashboard', dashboard_path
-          %li
             != link_to 'Projects', projects_path
           %li
             != link_to 'Users', users_path
+          - if logged_in?
+            %li
+              != link_to 'My Profile', current_user
         %p.column.width1.login
           - if logged_in?
-            Hi, #{current_user.name}
-            != link_to 'log out', session_path, :method => :delete
+            Hi, 
+            = current_user.name
+            != link_to '(log out)', session_path, :method => :delete
           - else
             != link_to 'log in/sign up', new_session_path
       -if flash[:notice]

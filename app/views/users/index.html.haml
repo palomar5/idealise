@@ -1,27 +1,23 @@
-%h1.column.width4.first Users on idealise
+%h1.column.width2.first Project owners and experts:
+%p.column.width2.intro
+  - unless params[:tag].blank?
+    Everything tagged with ‘#{h params[:tag]}’.
+  - else
+    Who’s hot and who’s not.
 
-
-%section.column.width3.first
-
-  %table.width3.first
-    %thead
-      %tr
-        %th Name
-        %th Description
-        %th Expert rating
-        %th(colspan="2") Tags
-    %tbody
-      - @users.each do |user|
-        %tr
-          %td
+%section.column.width4.first.stroke_heavy
+  %ul.column.width4.first.users.all
+    - @users.each do |user|
+      %li(class="column width2 #{cycle 'first', ''}")
+        .column.unitx1.first
+          != link_to image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar"), user
+        .column.unitx3
+          %h6
             !=link_to h(user.name), user
-          %td
-            = truncate(user.description, :length => 140)
-          %td
-            %span{:class => color_class_for_kudos(user.rating_points)}
-              = user.rating_points
-          %td
-            = user.tag_list.join(", ")
-          %td
-            - if logged_in? && user == current_user
-              != link_to 'Edit', edit_profile_path
+            (#{user.rating_points || "0"} Kudos points)
+          %p= truncate(user.description, :length => 170)
+          %p.column.width2.first.tags
+            %strong Tags:
+            - user.tag_list.each do |tag|
+              = tag
+            

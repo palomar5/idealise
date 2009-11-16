@@ -18,24 +18,23 @@
       %strong
         Tags:
       - @user.tag_list.each do |tag|
-        = tag
+        != link_to_unless_current tag, users_path(:tag => tag)
   
 .column.width4.first.stroke_heavy
-  %section.column.width2.first.projects
+  %section.column.width2.first
     %h2.column.width2.first Own Projects
     - unless @user.projects.empty?
-      != render :partial => 'projects', :locals => { :projects => @user.projects }
+      != render :partial => 'shared/projects', :locals => { :projects => @user.projects }
     - else
       %p No projects yet.
   
-  %section.column.width2.projects
+  %section.column.width2
     %h2.column.width2.first Projects given feedback on
     - unless @user.projects_with_feedback.empty?
-      != render :partial => 'projects', :locals => { :projects => @user.projects_with_feedback }
+      != render :partial => 'shared/projects', :locals => { :projects => @user.projects_with_feedback }
 
 - if logged_in?
   %section.width4.first.stroke_heavy.get_feedback
     %h2.column.width1.first Feedback
-    %h5.column.width3 Request this users feedback on one of your projects
-    %section.width3.first
-      != render :partial => 'feedback_requests/form'
+    %h5.column.width3 Request this user’s feedback on one of your projects
+    != render :partial => 'feedback_requests/form'

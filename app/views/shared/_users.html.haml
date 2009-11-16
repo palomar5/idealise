@@ -1,0 +1,14 @@
+%ul.column.width2.first.users
+  - users.each do |user|
+    %li.column.width2.first
+      .column.unitx1.first
+        != link_to image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar"), user
+      .column.unitx3
+        %h6
+          !=link_to h(user.name), user
+          (#{user.rating_points || "0"} Kudos points)
+        %p= truncate(user.description, :length => 170)
+        %p.column.unitx3.first.tags
+          %strong Tags:
+          - user.tag_list.each do |tag|
+            = tag

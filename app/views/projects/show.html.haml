@@ -34,7 +34,7 @@
       %h5 Tags
       %p
         - @project.tag_list.each do |tag|
-          = tag
+          != link_to_unless_current tag, projects_path(:tag => tag)
 
 %section.width4.first.stroke_heavy.first.feedback
   .column.width4.first
@@ -47,6 +47,12 @@
   - if logged_in?
     - if current_user == @project.user
       != render :partial => 'feedback_requests/form'
+      - unless @matching_users.nil?
+        .column.width1
+          %h5 Matching experts on idealise
+          %p
+            - @matching_users.each do |user|
+              != link_to user.name, user
     - else
       != render :partial => 'feedbacks/form', :locals => { :project => @project }
   - else

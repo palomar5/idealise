@@ -16,7 +16,7 @@ class FeedbackRatingsController < ResourceController::Base
       format.html { redirect_to project_url(parent_object.project) }
       format.json { 
         render :json => { 
-          :toReplace => { "feedback_#{parent_object.id}_kudos" => kudos_sparkline_tag(parent_object.reload.kudos_history, "ffffff") } 
+          :toReplace => { "feedback_#{parent_object.id}_kudos" => kudos_sparkline_tag(parent_object.reload.kudos_history, "dd6644", "ffffff") } 
         }.to_json
       }
     end

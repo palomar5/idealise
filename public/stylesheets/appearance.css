@@ -7,6 +7,10 @@
   color: #fff;
 }
 
+.box a, .box a:visited {
+  color: #fff;
+}
+
 .stroke_heavy {
   margin-top: 11px;
   padding-top: 4px;
@@ -78,6 +82,14 @@ h1 {
   display: block;
   float: left;
   margin-right: 12px;
+}
+
+#page>header a, #page>header a:visited {
+  color: #000;
+}
+
+#page>header h1 a, #page>header .menu a {
+  text-decoration: none;
 }
 
 /* forms */
@@ -162,6 +174,7 @@ h1 {
 }
 
 .home .video {
+  padding-bottom: 0;
   height: 270px;
   background: #678;
 }
@@ -170,26 +183,66 @@ h1 {
   padding-top: 3px;
 }
 
-.projects ul, .users ul {
-  top: 0;
-  margin-top: 0;
+/* projects and users */
+
+ul.projects, ul.users {
   list-style: none;
 }
 
-.projects ul li, .users ul li {
+.home ul.projects, ul.users {
+  top: 0;
+  margin-top: 0;
+}
+
+ul.projects li, ul.users li {
   top: 0;
 }
 
-.projects .unitx1, .projects .unitx3, .users .unitx1, .users .unitx3 {
+ul.projects p + p {
+  text-indent: 0;
+}
+
+.projects .unitx1, .projects .unitx3 {
   padding-bottom: 13px;
 }
 
-.projects .unitx1 img {
-  width: 105px;
-  height: 72px;
+.users .unitx1, .users .unitx3 {
+  padding-bottom: 11px;
 }
 
-/* projects */
+.projects.all, .users.all {
+  margin-top: 14px;
+}
+
+.projects.all .unitx1, .projects .unitx3, .projects .unitx3 .unitx1 {
+  padding-bottom: 0;
+}
+
+.projects.all h3 {
+  padding-bottom: 4px;
+}
+
+.projects p, .users p {
+  margin: 4px 0;
+}
+
+.projects .unitx1.first img {
+  width: 105px;
+  height: 108px;
+}
+
+.projects .unitx1.sparkline {
+  text-align: right;
+}
+
+.project>.stroke_heavy, .user>.stroke_heavy {
+  margin-left: 0;
+  padding-left: 18px;
+}
+
+.project>.stroke_heavy.first, .user>.stroke_heavy.first {
+  padding-left: 0;
+}
 
 .project .meta img {
   margin-top: -4px;
@@ -313,7 +366,7 @@ img.avatar {
 
 .feedback li .kudos .unitx2 {
   padding-left: 12px;
-  width: 216px;
+  width: 176px;
 }
 
 .feedback li .kudos a {
@@ -331,6 +384,10 @@ img.avatar {
 
 .kudos input {
   margin-left: 0;
+}
+
+.feedback li .kudos .feedback_sparkline {
+  padding-right: 40px;
 }
 
 .feedback li .kudos .feedback_sparkline img {
@@ -351,11 +408,6 @@ img.avatar {
 }
 
 /* footer */
-
-html, body, #page {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
 
 #page>footer {
   margin-top: 26px;
