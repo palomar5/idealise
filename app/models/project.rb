@@ -43,14 +43,16 @@ class Project < ActiveRecord::Base
 private
   
   def send_notifications
+    users_to_notify = []
     unless self.tag_list.empty?
-      users_to_notify = User.find_tagged_with(self.tag_list) + self.user.connected_users
-      users_to_notify.reject! {|u| u == self.user }
-      users_to_notify.uniq.each do |receiver|
-        UserMailer.deliver_project_notification(receiver, self) unless receiver.email.blank?
-      end
-      true
+      users_to_notify = User.find_tagged_with(self.tag_list)
     end
+    users_to_notify += self.user.connected_users
+    users_to_notify.reject! {|u| u == self.user }
+    users_to_notify.uniq.each do |receiver|
+      UserMailer.deliver_project_notification(receiver, self) unless receiver.email.blank?
+    end
+    true
   end
   
 end

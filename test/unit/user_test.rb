@@ -9,7 +9,7 @@ class UserTest < ActiveSupport::TestCase
     @user = User.new
     assert @user.respond_to?(:tag_list)
     assert @user.respond_to?(:tag_list=)
-  end
+  end  
     
 end
  
