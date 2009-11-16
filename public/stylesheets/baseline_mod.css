@@ -16,13 +16,9 @@
 .unitx6 { width: 720px; } /* 60.00em, Same as width3 */
 .unitx7 { width: 843px; } /* 70.25em */
 
-a {
-  color: #034;
-}
+a, a:visited { color: #f90; }
 
-a:visited {
-  color: #123;
-}
+a:hover, a:visited:hover { background: #f90; color: white; text-decoration: none; }
 
 form { overflow: visible;}
 
@@ -33,36 +29,5 @@ label.width4 input, label.width4 textarea, .width4>textarea { width: 962px; }
 .multilinex4 textarea { height: 72px }
 .multilinex6 textarea { height: 108px }
 
+h1 { margin-bottom: 36px; }
 h4 { margin-bottom: 18px; }
-
-table {
-  border-top: 3px solid rgb(0, 0, 0);
-  border-bottom: 1px solid rgb(0, 0, 0);
-  margin-top: 14px;
-  margin-bottom: 19px;
-  padding-bottom: 0;
-}
-
-th, tr:first-child td {
-  border-top: none;
-}
-
-th:first-child, td:first-child {
-  padding-left: 6px;
-}
-
-th:last-child, td:last-child {
-  padding-right: 6px;
-}
-
-th {
-  border-bottom: 1px solid rgb(0, 0, 0);
-}
-
-td {
-  border-color: #ccc;
-}
-
-tr:nth-child(odd) td {
-  background: #f6f9fc;
-}

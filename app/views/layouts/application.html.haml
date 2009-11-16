@@ -14,12 +14,12 @@
           != link_to 'idealise', root_path
         %ul.column.width2.menu
           %li
-            != link_to 'Projects', projects_path
+            != link_to 'Projects', projects_path, :class => (@controller.controller_name == 'projects' ? "active" : nil)
           %li
-            != link_to 'Users', users_path
+            != link_to 'Users', users_path, :class => ((@controller.controller_name == 'users' && (!current_user || !@user || current_user != @user)) ? "active" : nil)
           - if logged_in?
             %li
-              != link_to 'My Profile', current_user
+              != link_to 'My Profile', current_user, :class => ((@controller.controller_name == 'profiles') || (@controller.controller_name == 'users' && (current_user && @user && current_user == @user)) ? "active" : nil)
         %p.column.width1.login
           - if logged_in?
             Hi, 
@@ -29,11 +29,11 @@
             != link_to 'log in/sign up', new_session_path
       -if flash[:notice]
         %section.column.width4.first
-          .notice
+          .box.notice
             = flash[:notice]
       -if flash[:error]
         %section.column.width4.first
-          .notice
+          .box.notice
             = flash[:error]
       != yield
       %footer.column.width4.first.stroke_light

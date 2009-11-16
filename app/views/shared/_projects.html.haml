@@ -1,12 +1,18 @@
-%ul.column.width2.first.projects
+%ul(class="column first projects #{ all ? 'width4 all' : 'width2' }")
   - projects.each do |project|
-    %li.column.width2.first
+    %li(class="column width2 #{ all ? cycle('first', '') : 'first'}")
       .column.unitx1.first
         != link_to image_tag(project.image.url(:thumb, :class => 'unitx1')), project
       .column.unitx3
-        %h6.column.unitx2.first
+        %h6.column.unitx3.first
           !=link_to h(project.title), project
-          != kudos_sparkline_tag(project.kudos_history, "ffffff", "000000", "50x12")
+          %strong
+            (#{pluralize(project.project_ratings.sum(:rating) || "0", 'point', 'points')})
+          - if all && current_user == project.user
+            %span.actions
+              != link_to 'edit', edit_project_path(project)
+              |
+              != link_to 'delete', project, :confirm => "Are you sure?", :method => :delete
         %p.column.unitx3.first= truncate(project.description, :length => 170)  
         %p.column.unitx3.first.tags
           %strong Tags:

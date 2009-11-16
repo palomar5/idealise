@@ -1,11 +1,12 @@
-%h1.column.width4.first
+%h1.column.width3.first
   = @project.title
+%p.column.width1.intro
   - if logged_in? && current_user == @project.user
-    != link_to '(edit)', edit_project_path(@project)
+    != link_to 'Edit project', edit_project_path(@project)
 %section.width4.first.project
-  .column.width1.first.meta.stroke_heavy
+  .column.width1.first.meta
     != image_tag @project.image.url(:medium, :class => 'width1')
-    %p.stroke_light
+    %p.stroke_none
       %strong
         Author:
       != link_to(h(@project.user.try(:name)), user_path(@project.user)) || "no name"
@@ -17,24 +18,24 @@
       %strong
         Visits:
       #{@project.visits.size.to_i}
-  .column.width2.stroke_heavy
+    %p.stroke_light
+      %strong
+        Tags:
+      - @project.tag_list.each do |tag|
+        != link_to_unless_current tag, projects_path(:tag => tag)
+  .column.width2
     != simple_format sanitize(@project.description)
-  .column.width1.stroke_heavy.kudos_box
+  .column.width1.kudos_box
     %dl(id="project_#{@project.id}_kudos")
       %dt Kudos:
       %dd
         #{@project.project_ratings.sum(:rating)}
-        != kudos_sparkline_tag(@project.kudos_history, "667788", "ffffff", "90x18")
+        != kudos_sparkline_tag(@project.kudos_history, "ffffff", "262626", "90x18")
     - if logged_in?
       %div.kudos_actions
         Give Kudos:
         != button_to "☺", project_project_ratings_path(@project, :rating => 1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => 1, :format => 'json')
         != button_to "☹", project_project_ratings_path(@project, :rating => -1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => -1, :format => 'json')
-    .tags.stroke_heavy
-      %h5 Tags
-      %p
-        - @project.tag_list.each do |tag|
-          != link_to_unless_current tag, projects_path(:tag => tag)
 
 %section.width4.first.stroke_heavy.first.feedback
   .column.width4.first
@@ -49,7 +50,7 @@
       != render :partial => 'feedback_requests/form'
       - unless @matching_users.nil?
         .column.width1
-          %h5 Matching experts on idealise
+          %h6 Matching experts on idealise:
           %p
             - @matching_users.each do |user|
               != link_to user.name, user
