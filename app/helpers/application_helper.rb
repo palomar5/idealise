@@ -31,9 +31,16 @@ module ApplicationHelper
   def gravatar_url(user = nil)
     if user && !user.email.blank?
       hash = Digest::MD5.hexdigest(user.email)
-      "http://www.gravatar.com/avatar/#{hash}.jpg?s=100"
+      url = URI.parse "http://www.gravatar.com/avatar/#{hash}.jpg?s=105&d=404"
+      Net::HTTP.start(url.host, url.port) do |http|
+        if http.head(url.request_uri).code == "200"
+         "http://www.gravatar.com/avatar/#{hash}.jpg?s=105"
+        else
+          "/images/thumb/missing_person.png"
+        end
+      end
     else
-      "/images/empty.png"
+      "/images/thumb/missing_person.png"
     end
   end
   

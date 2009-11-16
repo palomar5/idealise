@@ -7,6 +7,10 @@
   color: #fff;
 }
 
+.box.width3 {
+  width: 696px;
+}
+
 .box a, .box a:visited {
   color: #fff;
 }
@@ -89,6 +93,12 @@ h2 {
   background: #F2F2F2;
 }
 
+#page>header>:first-child, #page>header>:last-child {
+  padding-left: 12px;
+  padding-right: 12px;
+  width: 204px;
+}
+
 #page>header h1, h1.claim {
   margin-bottom: 18px;
 }
@@ -146,14 +156,19 @@ h2 {
 
 .errorExplanation {
   background: #c00;
-  padding: 8px 12px;
+  padding: 2px 12px;
   color: #fff;
 }
 
 .errorExplanation h2 {
   font-size: 18px;
+  line-height: 18px;
   font-weight: bold;
   color: #fff;
+}
+
+.errorExplanation ul {
+  margin-top: 0;
 }
 
 .button-to, .button-to div {
@@ -219,7 +234,17 @@ h1.claim {
   margin-top: 18px;
   padding-bottom: 0;
   height: 270px;
-  background: #8C8C8C;
+  background: #D9D9D9;
+}
+
+.home .video p {
+  margin: 90px 0;
+  text-align: center;
+  font-size: 60px;
+  line-height: 54px;
+  font-weight: bold;
+  letter-spacing: -0.04em;
+  color: #f2f2f2;
 }
 
 .stroke_heavy.home {
@@ -243,16 +268,12 @@ ul.projects p + p {
   text-indent: 0;
 }
 
-.projects div.unitx1, div.projects .unitx3, .users div.unitx1, .users div.unitx3 {
+.projects div.unitx1, .projects div.unitx3, .users div.unitx3 {
   padding-bottom: 13px;
 }
 
-.users .unitx1, .users .unitx3 {
-  padding-bottom: 11px;
-}
-
-.projects.all, .users.all {
-  margin-top: 14px;
+.users div.unitx1 {
+  padding-bottom: 18px;
 }
 
 .projects p, .users p {
@@ -357,6 +378,7 @@ img.avatar {
 .feedback ul {
   list-style-type: none;
   margin-bottom: 0;
+  top: 0;
 }
 
 .feedback ul ul {
@@ -389,11 +411,11 @@ img.avatar {
 
 .feedback .answer_form>div.width2 {
   padding-bottom: 15px;
-  background: #8C8C8C url(/images/nose_right.png) top right no-repeat;
+  background: #f90 url(/images/nose_right.png) top right no-repeat;
 }
 
 .feedback li p:first-child, .feedback li p.actions, .feedback li p.tags, .feedback li .kudos .unitx2 {
-  padding-top: 5px;
+  padding-top: 4px;
   padding-bottom: 0;
 }
 

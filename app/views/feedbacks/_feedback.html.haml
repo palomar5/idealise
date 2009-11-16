@@ -1,7 +1,7 @@
 %li(class="column width4 first #{feedback.parent ? 'answer' : 'original'}")
   .column.width1.first.meta
     - unless feedback.parent
-      != image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar")
+      != image_tag(gravatar_url(feedback.user), :class => "column unitx1 first avatar")
       .column.unitx1
         - if feedback.user
           %p!= link_to feedback.user.try(:name) || "no name", feedback.user
@@ -24,7 +24,7 @@
         - if feedback.user
           %p!= link_to feedback.user.try(:name) || "no name", feedback.user
         %p #{feedback.created_at.to_s :short }
-      != image_tag(gravatar_url(current_user), :class => "column unitx1 avatar")
+      != image_tag(gravatar_url(feedback.user), :class => "column unitx1 avatar")
     - else
       &nbsp;
   - unless feedback.parent

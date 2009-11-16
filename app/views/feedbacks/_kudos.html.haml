@@ -1,13 +1,20 @@
 .kudos.column.width2.first
 
   .column.unitx2.first
-    This is
-    != button_to "helpful", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1 ), :class => 'kudos-button', "data-url" => project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1, :format => 'json' )
-    != button_to "not helpful", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1), :class => 'kudos-button', "data-url" => project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1, :format => 'json' )
+    - if logged_in?
+      - if feedback.user == current_user
+        (You can't rate own feedback.)
+      - else
+        This is
+        != button_to "helpful", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1 ), :class => 'kudos-button', "data-url" => project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => 1, :format => 'json' )
+        != button_to "not helpful", project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1), :class => 'kudos-button', "data-url" => project_feedback_feedback_ratings_path(feedback.project, feedback, :rating => -1, :format => 'json' )
+    - else
+      != link_to 'Login to rate this feedback!', new_session_path
 
   %p.column.unitx1.feedback_sparkline
     %span(id="feedback_#{feedback.id}_kudos")
       != kudos_sparkline_tag(feedback.kudos_history, "8c8c8c", "ffffff")
 
   %p.column.unitx1.actions
-    != link_to_function "reply", "$('#reply_on_feedback_#{feedback.id}').toggle('fast')"
+    - if logged_in?
+      != link_to_function "reply", "$('#reply_on_feedback_#{feedback.parent ? feedback.parent.id : feedback.id}').toggle('fast')"

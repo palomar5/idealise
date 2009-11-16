@@ -1,3 +1,12 @@
-%section.width4.first
-  %h2 Log in
-  != RPXNow.embed_code('idealise', rpx_token_session_url)
+%h1.column.unitx3.first Sign in to idealise! 
+%p.column.unitx5.intro It's easy - just use your existing accounts!
+%section.column.width4.first
+  .column.unitx3.first
+    != RPXNow.embed_code('idealise', rpx_token_session_url)
+  %ul.column.unitx5
+    %li Choose one of the services to log in. You will then be redirected to the site of the service.
+    %li There you can log into your existing account. We will then sign you up to idealise automatically.
+    %li We'll import your username, name, email address and self description (if provided) from that service.
+    %li You can change your idealise profile anytime you want.
+    %li
+      %strong We won't import any of your contacts, leave alone send them unwanted messages. Your data on the chosen service will remain untouched.

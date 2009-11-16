@@ -31,11 +31,18 @@
       %dd
         #{@project.project_ratings.sum(:rating)}
         != kudos_sparkline_tag(@project.kudos_history, "ffffff", "262626", "90x18")
-    - if logged_in?
-      %div.kudos_actions
-        Give Kudos:
-        != button_to "☺", project_project_ratings_path(@project, :rating => 1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => 1, :format => 'json')
-        != button_to "☹", project_project_ratings_path(@project, :rating => -1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => -1, :format => 'json')
+    %div.kudos_actions  
+      - if logged_in?
+        - if @project.user == current_user
+          Since this is your own project, you can't give Kudos to it. Wouldn't be fair, huh?
+        - else
+          Give Kudos:
+          != button_to "☺", project_project_ratings_path(@project, :rating => 1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => 1, :format => 'json')
+          != button_to "☹", project_project_ratings_path(@project, :rating => -1), :method => :post, :class => 'kudos-button', "data-url" => project_project_ratings_path(@project, :rating => -1, :format => 'json')
+      - else
+        %p
+          You are not logged in, so you can't give Kudos to this project. Go ahead,
+          != link_to "you can do it, too!", new_session_path
 
 %section.width4.first.stroke_heavy.first.feedback
   .column.width4.first
@@ -49,15 +56,21 @@
     - if current_user == @project.user
       != render :partial => 'feedback_requests/form'
       - unless @matching_users.nil?
-        .column.width1
+        .column.width1.meta
           %h6 Matching experts on idealise:
-          %p
-            - @matching_users.each do |user|
-              != link_to user.name, user
+          - if !@matching_users.empty?
+            %p
+              - @matching_users.each do |user|
+                != link_to user.name, user
+          - else
+            %p
+              No matching users found.
+            %p
+              != link_to "Search for others on the Users page!", users_path
     - else
       != render :partial => 'feedbacks/form', :locals => { :project => @project }
   - else
-    .column.width4.first.notice
+    .column.width3.first.box
       You are not logged in, so you can't give feedback on this project. Go ahead,
       != link_to "you can do it, too!", new_session_path
       

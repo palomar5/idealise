@@ -7,7 +7,7 @@
     
 %section.column.width4.first.user
   .column.unitx1.first.meta
-    != image_tag(gravatar_url(current_user), :class => "column unitx1 first avatar")
+    != image_tag(gravatar_url(@user), :class => "column unitx1 first avatar")
   .column.unitx5
     != simple_format sanitize(@user.description)
   .column.width1.stroke_heavy
@@ -33,8 +33,10 @@
     %h2.column.width2.first Projects given feedback on
     - unless @user.projects_with_feedback.empty?
       != render :partial => 'shared/projects', :locals => { :projects => @user.projects_with_feedback, :all => false }
+    - else
+      %p No feedback yet. You want to request some? Just use the form below!
 
-- if logged_in?
+- if logged_in? && current_user != @user
   %section.column.width4.first.stroke_heavy.get_feedback
     .column.width4.first
       %h2.column.width1.first Feedback
