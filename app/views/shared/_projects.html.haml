@@ -8,7 +8,7 @@
           !=link_to h(project.title), project
           %strong
             (#{pluralize(project.project_ratings.sum(:rating) || "0", 'point', 'points')})
-          - if all && current_user == project.user
+          - if current_user == project.user
             %span.actions
               != link_to 'edit', edit_project_path(project)
               |
